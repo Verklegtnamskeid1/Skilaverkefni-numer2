@@ -22,3 +22,6 @@ Verkefnalýsing
     Kóðinn skal vera lesanlegur, vel formaður, vel skjalaður, og viðhaldanlegur.
 
 Skila skal lokaútgáfu kóðans í einni .zip/.rar skrá, ásamt upplýsingum um það hvar kóðann er að finna, þ.e. á GitHub/BitBucket etc. Þá skal fylgja með keyranleg útgáfa kerfisins, ásamt gagnaskrá með a.m.k. 10 færslum.
+
+
+Skilafrestur til miðvikudagsins 3 des kl 10:00
