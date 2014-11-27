@@ -3,6 +3,10 @@ Skilverefni1
 
 Fyrsta skilaverkefnið
 
+Hugmyndir: 
+
+* Nota qstring (https://qt-project.org/doc/qt-4.7/qstring.html) en ekki string – qstring styður utf8 
+
 Það sem við þurfum er:
 
 * Eitthvað sem birtir allar færslur (hægt að sortera eftir dánar- og fæðingarári, kyn og nafni. 
