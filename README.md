@@ -6,6 +6,14 @@ Fyrsta skilaverkefnið
 Hugmyndir: 
 
 * Nota qstring (https://qt-project.org/doc/qt-4.7/qstring.html) en ekki string – qstring styður utf8 
+* 
+
+struct person {
+  int id;
+  QString name;
+  int year_born;
+  int year_death;
+} ;
 
 Það sem við þurfum er:
 
