@@ -3,6 +3,16 @@ Skilverefni1
 
 Fyrsta skilaverkefnið
 
+Það sem við þurfum er:
+
+* Eitthvað sem birtir allar færslur (hægt að sortera eftir dánar- og fæðingarári, kyn og nafni. 
+** Það veðrur líka að vera hægt að leita
+* Eitthvað sem getur tekið við inputi og bætt við í einhverja C++ drullu
+* Eitthvað sem opnar skjal (t.d. csv: http://en.wikipedia.org/wiki/Comma-separated_values skjal) og setur í C++ drulluna
+* Eitthvað sem tekur C++ drulluna og vistar í skjalið
+
+* Uhh, svo þarf auðvitað að passa að notendaviðmótið sé allt AÐGREINT frá virkni svo við getum auðveldlega portað þessu á Android og allt moðerfökkingdrasl
+
 Verkefnalýsing
 ============
 
