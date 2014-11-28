@@ -26,7 +26,7 @@ void debug_print(QVector<person> buffer)
 int main(int argc, char *argv[])
 {
     sk1Data gogn;
-    gogn.add_person(QString("z"), 0, 20, 3);
+    gogn.add_person(QString("Pall Ivan"), 0, 1981, 2020);
     gogn.add_person(QString("a"), 1, 10, 3);
     gogn.add_person(QString("hahahehe"), 1, 444, 3);
 
@@ -56,10 +56,5 @@ int main(int argc, char *argv[])
     QTextStream(stdout) << "all with sorting year born" << endl;
     data = gogn.query(GET_ALL, "", SORT_BY_YEARBORN);
     debug_print(data);
-
-
-
-
-
 }
 

@@ -14,7 +14,7 @@ sk1Data::sk1Data()
 
 bool sortname(person a, person b)
 {
-    return (a.name < b.name);
+    return (a.name.toLower() < b.name.toLower());
 }
 
 bool sortgender(person a, person b)
