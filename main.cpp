@@ -1,12 +1,14 @@
-#include <QCoreApplication>
-/* fökk já! Þetta er algjör snilld */
+#include "main.h"
+#include "sk1data.h"
 
 
-/* HAHAH! */
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-
-    return a.exec();
+    sk1Data gogn;
+    gogn.add_person(QString("hehe"), 1, 2, 3);
+    gogn.add_person(QString("hehe"), 1, 2, 3);
+    gogn.add_person(QString("hahahehe"), 1, 4, 3);
+    QVector<person> data = gogn.query();
 }
+

@@ -9,5 +9,10 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    sk1data.cpp
+
+HEADERS += \
+    main.h \
+    sk1data.h
 
