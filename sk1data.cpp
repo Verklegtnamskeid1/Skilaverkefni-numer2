@@ -2,11 +2,37 @@
 #include "sk1data.h"
 
 
+
+
 sk1Data::sk1Data()
  {
      lock = false;
      latestid = 0;
  }
+
+
+
+bool sortname(person a, person b)
+{
+    return (a.name < b.name);
+}
+
+bool sortgender(person a, person b)
+{
+    return (a.gender < b.gender);
+}
+bool sortyearborn(person a, person b)
+{
+    return (a.year_born < b.year_born);
+}
+bool sortyeardeath(person a, person b)
+{
+    return (a.year_death < b.year_death);
+}
+bool sortid(person a, person b)
+{
+    return (a.id < b.id);
+}
 
 QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, int sort)
 {
@@ -53,10 +79,33 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
 
     /* Hér þarf að vera sort */
 
+    switch(sort_by)
+    {
+       case(SORT_BY_NAME):
+            std::sort(buffer.begin(), buffer.end(), sortname);
+            break;
+       case(SORT_BY_GENDER):
+            std::sort(buffer.begin(), buffer.end(), sortgender);
+            break;
+       case(SORT_BY_YEARBORN):
+            std::sort(buffer.begin(), buffer.end(), sortyearborn);
+            break;
+       case(SORT_BY_YEARDEATH):
+            std::sort(buffer.begin(), buffer.end(), sortyeardeath);
+            break;
+       default:
+            std::sort(buffer.begin(), buffer.end(), sortid);
+    }
+
+
+
+
 
     /* Snúum vektornum við ef beðið er um DESCENDING */
     if (sort != SORT_ASCENDING)
     {
+
+
         int size = buffer.count();
         QVector<person> buffer2;
 
@@ -64,6 +113,9 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
         {
             buffer2.push_back(buffer[a]);
         }
+
+        buffer = buffer2;
+
 
     }
 
