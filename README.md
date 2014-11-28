@@ -25,6 +25,8 @@ struct person {
 
 * Uhh, svo þarf auðvitað að passa að notendaviðmótið sé allt AÐGREINT frá virkni svo við getum auðveldlega portað þessu á Android og allt moðerfökkingdrasl
 
+1 like
+
 Verkefnalýsing
 ============
 
