@@ -2,6 +2,8 @@
 #define MAIN_H
 #include <QtCore>
 
+
+
 struct person
 {
        int id;
@@ -41,4 +43,5 @@ static const int SORT_BY_YEARDEATH = 600;
 
 
 static const int OUTPUT_ERROR = -99;
+
 #endif // MAIN_H
