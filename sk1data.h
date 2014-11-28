@@ -1,6 +1,8 @@
 #ifndef SK1DATA_H
 #define SK1DATA_H
 
+void demo1sk1data();
+
 class sk1Data
 {
 public:
@@ -22,6 +24,12 @@ private:
     bool lock;
     int latestid;
     QVector<person> entries;
+    friend bool sortname(person a, person b);
+    friend bool sortgender(person a, person b);
+    friend bool sortyearborn(person a, person b);
+    friend bool sortyeardeath(person a, person b);
+    friend bool sortid(person a, person b);
+
 
 };
 
