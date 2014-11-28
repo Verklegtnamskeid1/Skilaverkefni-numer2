@@ -9,7 +9,9 @@ public:
     ConsoleUI();
     void start();
 private:
-
+    void List();
+    void Search();
+    void AddPerson();
 };
 
 #endif // CONSOLEUI_H
