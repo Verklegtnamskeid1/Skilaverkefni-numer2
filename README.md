@@ -1,5 +1,8 @@
 Skilverefni1
 ============
+Skellti í smá síðu á wikinu:
+https://github.com/Verklegtnamskeid1/Skilverefni1/wiki/klassaskilgreiningar
+
 
 Fyrsta skilaverkefnið
 
