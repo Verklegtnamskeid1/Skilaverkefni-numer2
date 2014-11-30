@@ -124,7 +124,6 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
 }
 
 
-
 void sk1Data::add_person(QString name, int gender, int year_born, int year_death)
 {
     while (lock) {} /* Uhh, threading safe, algjörlega tilgangslaust so far! */
@@ -133,3 +132,5 @@ void sk1Data::add_person(QString name, int gender, int year_born, int year_death
     entries.push_back(input);
     lock = false;
 }
+sk1Data gogn;
+

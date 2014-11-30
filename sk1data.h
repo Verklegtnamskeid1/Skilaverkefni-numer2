@@ -29,4 +29,7 @@ private:
 
 };
 
+extern sk1Data gogn;
+
+
 #endif // SK1DATA_H

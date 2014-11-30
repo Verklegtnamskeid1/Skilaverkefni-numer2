@@ -11,6 +11,7 @@ struct person
        int gender;
        int year_born;
        int year_death;
+
        person(int in_id, QString in_name, int in_gender,
               int in_year_born, int in_year_death):
        id(in_id),
@@ -41,7 +42,15 @@ static const int SORT_BY_GENDER = 400;
 static const int SORT_BY_YEARBORN = 500;
 static const int SORT_BY_YEARDEATH = 600;
 
+static const int SORTY_BY [5] = { SORT_BY_ID, SORT_BY_NAME,
+                                  SORT_BY_GENDER, SORT_BY_YEARBORN,
+                                  SORT_BY_YEARDEATH };
+static const int GET_BY [5]  = {GET_BY_ID, GET_BY_NAME,
+                                GET_BY_GENDER, GET_BY_YEARBORN,
+                                GET_BY_YEARDEATH};
+
 
 static const int OUTPUT_ERROR = -99;
+
 
 #endif // MAIN_H

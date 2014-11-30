@@ -1,7 +1,18 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
-#include <string>
-#include <iostream>
+
+struct searchdef
+{
+    int sort;
+    int sortby;
+
+    searchdef(int sortget, int sortbyget):
+        sort(sortget),
+        sortby(sortbyget)
+    {}
+    searchdef()
+    {}
+};
 
 class ConsoleUI
 {
@@ -12,6 +23,15 @@ private:
     void List();
     void Search();
     void AddPerson();
+    void Print(QVector<person> result);
+
+
+
+    searchdef DefineSearch();
+
 };
+
+extern QTextStream cout;
+extern QTextStream cin;
 
 #endif // CONSOLEUI_H
