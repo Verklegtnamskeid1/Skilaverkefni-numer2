@@ -150,7 +150,7 @@ void sk1Data::add_person(int id, QString name, int gender, int year_born, int ye
     lock = true;
     person input = person(id, name, gender, year_born, year_death);
     entries.push_back(input);
-    latestid = id;
+    latestid = id+1;
     lock = false;
 }
 
