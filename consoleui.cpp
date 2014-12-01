@@ -133,8 +133,8 @@ void ConsoleUI::start() {
          << "3. Insert person" << endl
          << "4. Quit" << endl;
 
-    QString input = cin.readLine();
-    int inputid = input.toInt();
+    int inputid = cin.readLine().toInt();
+
 
 
     switch(inputid){
