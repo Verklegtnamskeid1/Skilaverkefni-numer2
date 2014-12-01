@@ -49,6 +49,14 @@ searchdef ConsoleUI::DefineSearch()
     return searchdef(sortby, sort);
 }
 
+void ConsoleUI::Delete()
+{
+    cout << "Enter id of entry to delete: " << endl;
+    int idDelete = cin.readLine().toInt();
+    gogn.remove_person(idDelete);
+}
+
+
 void ConsoleUI::Print(QVector<person> result)
 {
 
@@ -131,7 +139,8 @@ void ConsoleUI::start() {
          << "1. List" << endl
          << "2. Search" << endl
          << "3. Insert person" << endl
-         << "4. Quit" << endl;
+         << "4. Delete person" << endl
+         << "5. Quit" << endl;
 
     int inputid = cin.readLine().toInt();
 
@@ -144,7 +153,9 @@ void ConsoleUI::start() {
         break;
     case 3: AddPerson();
         break;
-    case 4: return;
+    case 4: Delete();
+        break;
+    case 5: return;
         break;
     default:
         cout << "Invalid input." << endl;

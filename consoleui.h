@@ -24,7 +24,7 @@ private:
     void Search();
     void AddPerson();
     void Print(QVector<person> result);
-
+    void Delete();
 
 
     searchdef DefineSearch();

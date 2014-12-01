@@ -11,7 +11,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     sk1data.cpp \
-    consoleui.cpp
+    consoleui.cpp \
+    cvs.cpp
 
 HEADERS += \
     main.h \

@@ -34,6 +34,27 @@ bool sortid(person a, person b)
     return (a.id < b.id);
 }
 
+
+void sk1Data::remove_person(int id)
+{
+    while (lock) {} /* Uhh, threading safe, algjörlega tilgangslaust so far! */
+    lock = true;
+
+    int a = 0;
+    foreach(person item, entries)
+    {
+
+        if (item.id == id)
+        {
+            entries.remove(a);
+        }
+        a++;
+     }
+    lock = false;
+
+}
+
+
 QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, int sort)
 {
     QVector<person> buffer;
@@ -121,6 +142,16 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
 
     return buffer;
 
+}
+
+void sk1Data::add_person(int id, QString name, int gender, int year_born, int year_death)
+{
+    while (lock) {} /* Uhh, threading safe, algjörlega tilgangslaust so far! */
+    lock = true;
+    person input = person(id, name, gender, year_born, year_death);
+    entries.push_back(input);
+    latestid = id;
+    lock = false;
 }
 
 
