@@ -4,7 +4,7 @@
 
 int main()
 {
-
+    /* Þetta opnar skjalið og hendir því inn
     QFile csv("file");
     if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -31,9 +31,13 @@ int main()
         csv.close();
     }
 
+
+    /* Starta console */
     ConsoleUI ui = ConsoleUI();
     ui.start();
-    
+
+
+    /* Vista skjalið og hætta */
     QVector<person> results =   gogn.query();
     QFile write("file");
     write.open(QIODevice::WriteOnly | QIODevice::Text);
