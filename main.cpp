@@ -4,7 +4,7 @@
 
 int main()
 {
-    /* Þetta opnar skjalið og hendir því inn
+    /* Þetta opnar skjalið og hendir því inn */
     QFile csv("file");
     if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
     {
