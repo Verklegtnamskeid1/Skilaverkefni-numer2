@@ -13,7 +13,7 @@ searchdef ConsoleUI::DefineSearch()
 {
 
     cout << "\nHow shall I sort the results:" << endl
-         << "0: By id" << endl
+         << "0: By ID" << endl
          << "1: By name" << endl
          << "2: By gender" << endl
          << "3: By year born" << endl
@@ -66,11 +66,11 @@ void ConsoleUI::Print(QVector<person> result)
        if(item.gender == 0) gender = "Male";
        else gender = "Female";
 
-       cout << "id:" << item.id << "\t"
-       << "name:" << item.name << "\t"
-       << "gender:" << gender << "\t"
-       << "year born:" << item.year_born << "\t"
-       << "year died:" << item.year_death << endl;
+       cout << endl << "ID:" << item.id << "\n"
+       << "Name:" << item.name << "\n"
+       << "Gender:" << gender << "\n"
+       << "Year born:" << item.year_born << "\t"
+       << "Year died:" << item.year_death << endl;
     }
 }
 
@@ -106,7 +106,7 @@ void ConsoleUI::AddPerson()
 
 void ConsoleUI::Search()
 {
-    cout << "\nSearch" << QString::fromUtf8("…") << endl
+    cout << "\nSearch" << endl
          << "0: in field id" << endl
          << "1: in field name" << endl
          << "2: in field gender" << endl
