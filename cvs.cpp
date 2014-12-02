@@ -1,6 +1,6 @@
 void openCSVfile()
 {
-QFile csv("file");
+QFile csv(FILENAME);
 if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
 {
     QTextStream in(&csv);
@@ -29,7 +29,7 @@ if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
 void saveCSVfile()
 {
     QVector<person> results =   gogn.query();
-    QFile write("file");
+    QFile write(FILENAME);
     write.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream wf(&write);
     foreach(person item,results )

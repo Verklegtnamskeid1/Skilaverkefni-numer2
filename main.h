@@ -52,5 +52,5 @@ static const int GET_BY [5]  = {GET_BY_ID, GET_BY_NAME,
 
 static const int OUTPUT_ERROR = -99;
 
-
+static const QString FILENAME = "file";
 #endif // MAIN_H
