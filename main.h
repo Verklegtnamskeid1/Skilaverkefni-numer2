@@ -75,4 +75,5 @@ static const int GET_BY [5]  = {GET_BY_ID, GET_BY_NAME,
 static const int OUTPUT_ERROR = -99; /* Ónotað einsog er */
 
 static const QString FILENAME =  QDir::homePath() + "/file";
+
 #endif // MAIN_H

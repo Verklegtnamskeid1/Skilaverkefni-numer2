@@ -6,8 +6,6 @@ ConsoleUI::ConsoleUI()
 {
 }
 
-
-
 searchdef ConsoleUI::DefineSearch()
 {
 
