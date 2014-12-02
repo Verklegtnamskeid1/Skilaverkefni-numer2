@@ -23,6 +23,8 @@ private:
     bool lock;
     int latestid;
     QVector<person> entries;
+
+    /* Hjálparföll fyrir sort */
     friend bool sortname(person a, person b);
     friend bool sortgender(person a, person b);
     friend bool sortyearborn(person a, person b);

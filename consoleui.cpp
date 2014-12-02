@@ -63,15 +63,21 @@ void ConsoleUI::Print(QVector<person> result)
     foreach(person item, result)
     {
        QString gender;
+       QString died;
        if(item.gender == 0) gender = "Male";
        else gender = "Female";
+       if (item.year_death == 0) died = " is still alive and computing";
+       else {
+           died = QString::number(item.year_death);
+       }
 
        cout << endl << "ID:" << item.id << "\n"
        << "Name:" << item.name << "\n"
        << "Gender:" << gender << "\n"
        << "Year born:" << item.year_born << "\t"
-       << "Year died:" << item.year_death << endl;
+       << "Year died:" << died << endl;
     }
+       cout << "_____" << endl;
 }
 
 void ConsoleUI::List()
@@ -95,9 +101,19 @@ void ConsoleUI::AddPerson()
     cout << endl << "Enter year born:" << endl;
     int yearborn = cin.readLine().toInt();
 
-    cout << "\nEnter year dead:"<< endl;
-    int yeardead = cin.readLine().toInt();
-
+    if (gender == 0) cout << "Is he dead? (y/n Y/N)" << endl;
+    else cout << "Is she dead?" << endl;
+    QString yn = cin.readLine();
+    int yeardead;
+    if (yn == "Y" || yn == "y")
+    {
+        cout << "\nEnter year dead:"<< endl;
+        yeardead = cin.readLine().toInt();
+    }
+    else
+    {
+        yeardead = 0;
+    }
     gogn.add_person(name, gender, yearborn, yeardead);
 
     cout << "\nPerson added!" << endl;

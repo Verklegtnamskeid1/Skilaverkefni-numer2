@@ -1,6 +1,6 @@
 void openCSVfile()
 {
-QFile csv(FILENAME);
+QFile csv(FILENAME); /* FILENAME er skilgreind í main.h */
 if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
 {
     QTextStream in(&csv);
@@ -11,7 +11,9 @@ if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
         QStringList rows = line.split(",");
         if (rows.count() == 5)
         {
-
+            /* file formattið er til dæmis svona:
+             * 0,jon orn,0,1983,3000
+             * */
             int id = rows[0].toInt();
             QString name = rows[1];
             int gender = rows[2].toInt();
@@ -29,7 +31,7 @@ if (csv.exists() && csv.open(QIODevice::ReadOnly | QIODevice::Text))
 void saveCSVfile()
 {
     QVector<person> results =   gogn.query();
-    QFile write(FILENAME);
+    QFile write(FILENAME); /* FILENAME er skilgreint í main.h */
     write.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream wf(&write);
     foreach(person item,results )

@@ -11,29 +11,39 @@ sk1Data::sk1Data()
  }
 
 
+/* Föll til að aðstoða við std::sort*/
 
+/* Raða eftir person.name */
 bool sortname(person a, person b)
 {
     return (a.name.toLower() < b.name.toLower());
 }
 
+/* Raða eftir person.gender */
 bool sortgender(person a, person b)
 {
     return (a.gender < b.gender);
 }
+
+/* Raða eftir person.year_born */
 bool sortyearborn(person a, person b)
 {
     return (a.year_born < b.year_born);
 }
+/* Raða eftir person.year_death*/
 bool sortyeardeath(person a, person b)
 {
     return (a.year_death < b.year_death);
 }
+/* Raða eftir person.id */
 bool sortid(person a, person b)
 {
     return (a.id < b.id);
 }
 
+
+/* Fjarlægir ALLAR færslur með id (það er jú fræðilegur möguleiki einsog er
+ * að færslur hafi sama id */
 
 void sk1Data::remove_person(int id)
 {
@@ -54,15 +64,14 @@ void sk1Data::remove_person(int id)
 
 }
 
-
+/* Fallið sem birtir færslur sem uppfylla ákveðin skilyrði, nýtist til að birta, leita og raða */
 QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, int sort)
 {
     QVector<person> buffer;
-    int compare = 0;
 
-    /* Veljum viðeigandi færslur */
+    /* Veljum viðeigandi færslur, ef GET_ALL birtum allt */
     if (search == GET_ALL) buffer = entries;
-    else if (search == GET_BY_NAME)
+    else if (search == GET_BY_NAME) /* gúlp þurfum að leita af searchstring í person.name */
     {
         foreach(person item, entries)
         {
@@ -74,11 +83,18 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
 
     }
     else {
+        /* Við erum að leita að tölu og því
+         * breytum við searchstring í int */
+
+        /* Kallað er á fallið með searchstring sem QString
+         * og því breytum við því hér í int */
         int searchnumber = searchstring.toInt();
+        int compare = 0;
 
         foreach(person item, entries)
         {
-            switch(search)
+            /* Tökum int compare og látum það fá gildi þeirrar breytu sem við leitum af */
+            switch(search) /* Látum int compare vera viðeigandi breytu */
             {
                 case(GET_BY_ID):
                     compare = item.id;
@@ -93,40 +109,33 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
                     compare = item.year_death;
                     break;
             }
-            if (compare == searchnumber)
+            if (compare == searchnumber) /* 'edda viljum við, 'edda pushum við */
                 buffer.push_back(item);
          }
     }
 
-    /* Hér þarf að vera sort */
-
+    /* Hér sortum við allt sem við erum með í buffer */
     switch(sort_by)
     {
-       case(SORT_BY_NAME):
+       case(SORT_BY_NAME): /* Raða útfrá person.name*/
             std::sort(buffer.begin(), buffer.end(), sortname);
             break;
-       case(SORT_BY_GENDER):
+       case(SORT_BY_GENDER): /* Raða útfrá person.gender */
             std::sort(buffer.begin(), buffer.end(), sortgender);
             break;
-       case(SORT_BY_YEARBORN):
+       case(SORT_BY_YEARBORN): /* Raða útfrá person.year_born */
             std::sort(buffer.begin(), buffer.end(), sortyearborn);
             break;
-       case(SORT_BY_YEARDEATH):
+       case(SORT_BY_YEARDEATH): /* Raða útfrá person.year_death */
             std::sort(buffer.begin(), buffer.end(), sortyeardeath);
             break;
-       default:
+       default: /* Gerum ráð fyrir að plebbs/notandi vilji raða eftir id */
             std::sort(buffer.begin(), buffer.end(), sortid);
     }
-
-
-
-
 
     /* Snúum vektornum við ef beðið er um DESCENDING */
     if (sort != SORT_ASCENDING)
     {
-
-
         int size = buffer.count();
         QVector<person> buffer2;
 
@@ -136,8 +145,6 @@ QVector<person> sk1Data::query(int search, QString searchstring, int sort_by, in
         }
 
         buffer = buffer2;
-
-
     }
 
     return buffer;

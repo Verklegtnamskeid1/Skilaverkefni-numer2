@@ -2,6 +2,7 @@
 #include "sk1data.h"
 #include "consoleui.h"
 #include "cvs.cpp"
+
 int main()
 {
     /* Þetta opnar skjalið og hendir því inn */
@@ -16,4 +17,3 @@ int main()
     saveCSVfile();
     return 0;
 }
-

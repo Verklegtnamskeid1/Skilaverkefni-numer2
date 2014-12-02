@@ -3,6 +3,26 @@
 #include <QtCore>
 
 
+/* person er skilgreining á færslunum um einstaklingana
+ * sem við vinnum með
+ * tekur einsog er:
+ * id - id
+ * name - nafn
+ * gender - kyn
+ * year_born - fæðingarár
+ * year_death - dánarár
+ * */
+
+/* person jonthor;
+ * person.id = 1;
+ * person.name = QString("Jón Þór");
+ * person.gender = 1; 1 er kona í forritinu hehe
+ * person.year_born = 1984;
+ * person.year_death = 3050;
+ *
+  person jonthor = person(1,QString("Jón Þór", 1, 1984,3050);
+*/
+
 
 struct person
 {
@@ -26,6 +46,8 @@ struct person
 
 };
 
+
+/* Til að bæta læsileika á virkni sk1data (og seinna meir sambærilegra klassa */
 static const int GET_ALL = 100;
 static const int GET_BY_ID = 200;
 static const int GET_BY_NAME = 300;
@@ -50,7 +72,7 @@ static const int GET_BY [5]  = {GET_BY_ID, GET_BY_NAME,
                                 GET_BY_YEARDEATH};
 
 
-static const int OUTPUT_ERROR = -99;
+static const int OUTPUT_ERROR = -99; /* Ónotað einsog er */
 
 static const QString FILENAME = "file";
 #endif // MAIN_H
