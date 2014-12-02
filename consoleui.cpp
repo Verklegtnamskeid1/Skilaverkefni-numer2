@@ -94,9 +94,15 @@ void ConsoleUI::AddPerson()
     cout << "\nEnter name:" << endl;
     QString name = cin.readLine();
 
+    if (name.isEmpty())
+    {
+        cout << "\nPlease type a name" << endl;
+        return;
+    }
+
     cout << "\nEnter gender (0 male, 1 female):" << endl;
     int gender= cin.readLine().toInt();
-
+    QString genderstring = 0 ? "Female" : "Male";
     cout << endl << "Enter year born:" << endl;
     int yearborn = cin.readLine().toInt();
 
@@ -104,6 +110,7 @@ void ConsoleUI::AddPerson()
     else cout << "Is she dead? (y/n Y/N)" << endl;
     QString yn = cin.readLine();
     int yeardead;
+
     if (yn == "Y" || yn == "y")
     {
         cout << "\nEnter year dead:"<< endl;
@@ -111,12 +118,32 @@ void ConsoleUI::AddPerson()
     }
     else
     {
-        yeardead = 0;
+        yeardead = -1;
     }
-    gogn.add_person(name, gender, yearborn, yeardead);
 
-    cout << "\nPerson added!" << endl;
+    if (yearborn < 1500 || yeardead <1500 )
+    {
+        cout << "Please check if your years are correct! " << endl << endl;
+    }
 
+    yeardead = -1 ? yeardead : 0;
+
+    QString yeardeadstring = 0 ? QString::number(yeardead) : "Still alive";
+
+    cout
+         << "Name: " << name << endl
+         << "Gender: "  << genderstring << endl
+         << "Year born " << yearborn << endl
+         << "Year dead: " << yeardeadstring << endl
+         << "Do you wish to insert this entry: (y/n Y/N)" << endl;
+    yn = cin.readLine();
+    if (yn == "Y" || yn == "y")
+    {
+        gogn.add_person(name, gender, yearborn, yeardead);
+        cout << "\nPerson added!" << endl;
+    }
+    else
+        return;
 }
 
 void ConsoleUI::Search()
