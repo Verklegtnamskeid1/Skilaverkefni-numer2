@@ -121,7 +121,7 @@ void ConsoleUI::AddPerson()
         yeardead = -1;
     }
 
-    if (yearborn == yeardead || yeardead < yearborn)
+    if ((yearborn == yeardead || yeardead < yearborn) && yeardead != -1)
     {
         /* Afsakið hrokann en hér gerum við ráð fyrir því að fólk sem nær ekki að
          * að verða ársgamalt geti orðið frægt í tölvugeiranum */
@@ -129,7 +129,7 @@ void ConsoleUI::AddPerson()
         return;
     }
 
-    if (yearborn < 1500 || yeardead <1500 )
+    if (yearborn < 1500 || (yeardead <1500 && yeardead != -1) )
     {
         cout << "Please check if your years are correct! " << endl << endl;
     }
