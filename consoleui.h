@@ -1,5 +1,6 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
+#include "sk1data.h"
 
 struct searchdef
 {
@@ -26,7 +27,10 @@ private:
     void Print(QVector<person> result);
     void Delete();
 
-
+    sk1Data gogn;
+    void loadfile();
+    void savefile();
+    void quitmsg();
     searchdef DefineSearch();
 
 };

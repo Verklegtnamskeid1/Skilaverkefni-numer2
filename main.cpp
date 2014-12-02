@@ -1,12 +1,10 @@
 #include "main.h"
-#include "sk1data.h"
 #include "consoleui.h"
-#include "cvs.cpp"
 
 int main()
 {
+/* færa sk1data gogn yfir í consoleui */
     /* Þetta opnar skjalið og hendir því inn */
-    openCSVfile();
 
     /* Starta console */
     ConsoleUI ui = ConsoleUI();
@@ -14,6 +12,5 @@ int main()
 
 
     /* Vista skjalið og hætta */
-    saveCSVfile();
     return 0;
 }

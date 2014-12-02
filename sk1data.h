@@ -16,6 +16,7 @@ public:
                           int sort_by = SORT_BY_ID, int sort = SORT_ASCENDING);
 
     void remove_person(int id);
+    void insertlist(QVector<QStringList> list);
 
 
 
@@ -31,9 +32,9 @@ private:
     friend bool sortyeardeath(person a, person b);
     friend bool sortid(person a, person b);
 
+
 };
 
-extern sk1Data gogn;
 
 
 #endif // SK1DATA_H

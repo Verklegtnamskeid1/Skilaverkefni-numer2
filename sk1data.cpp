@@ -42,6 +42,22 @@ bool sortid(person a, person b)
 }
 
 
+/* Tekur við lista og setur í vectorinn */
+void sk1Data::insertlist(QVector<QStringList> list)
+{
+    foreach (QStringList item, list)
+    {
+        int id = item[0].toInt();
+        QString name = item[1];
+        int gender = item[2].toInt();
+        int yearborn = item[3].toInt();
+        int yeardead = item[4].toInt();
+        add_person(id, name, gender, yearborn, yeardead);
+
+    }
+}
+
+
 /* Fjarlægir ALLAR færslur með id (það er jú fræðilegur möguleiki einsog er
  * að færslur hafi sama id */
 
@@ -170,5 +186,4 @@ void sk1Data::add_person(QString name, int gender, int year_born, int year_death
     entries.push_back(input);
     lock = false;
 }
-sk1Data gogn;
 

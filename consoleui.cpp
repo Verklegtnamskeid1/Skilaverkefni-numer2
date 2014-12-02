@@ -1,7 +1,6 @@
 #include "main.h"
-#include "sk1data.h"
 #include "consoleui.h"
-
+#include "cvs.cpp"
 
 ConsoleUI::ConsoleUI()
 {
@@ -71,11 +70,11 @@ void ConsoleUI::Print(QVector<person> result)
            died = QString::number(item.year_death);
        }
 
-       cout << endl << "ID:" << item.id << "\n"
-       << "Name:" << item.name << "\n"
-       << "Gender:" << gender << "\n"
-       << "Year born:" << item.year_born << "\t"
-       << "Year died:" << died << endl;
+       cout << endl << "ID: " << item.id << "\n"
+       << "Name: " << item.name << "\n"
+       << "Gender: " << gender << "\n"
+       << "Year born: " << item.year_born << "\t"
+       << "Year died: " << died << endl;
     }
        cout << "_____" << endl;
 }
@@ -102,7 +101,7 @@ void ConsoleUI::AddPerson()
     int yearborn = cin.readLine().toInt();
 
     if (gender == 0) cout << "Is he dead? (y/n Y/N)" << endl;
-    else cout << "Is she dead?" << endl;
+    else cout << "Is she dead? (y/n Y/N)" << endl;
     QString yn = cin.readLine();
     int yeardead;
     if (yn == "Y" || yn == "y")
@@ -146,8 +145,37 @@ void ConsoleUI::Search()
 
 }
 
-void ConsoleUI::start() {
+void ConsoleUI::loadfile()
+{
+    /* Opna skrá */
+    cout << "Open file: " << FILENAME << endl ;
+    QVector<QStringList> list = openCSVfile();
 
+    if (list.empty()) cout << "File does not exist or is empty!" << endl;
+    else cout << "Imported " << list.count() << " entrie(s) " << endl;
+    cout << endl;
+
+    gogn.insertlist(list);
+}
+
+void ConsoleUI::savefile()
+{
+    cout << "Saving to file: " << FILENAME << endl;
+    saveCSVfile(gogn.query());
+    cout << endl;
+}
+
+void ConsoleUI::quitmsg()
+{
+    cout << endl;
+    cout << "Goodbye! " << endl;
+    cout << endl;
+}
+
+
+void ConsoleUI::start()
+{
+    loadfile();
 
     while(1){
     cout << "Welcome!" << endl
@@ -156,8 +184,8 @@ void ConsoleUI::start() {
          << "2. Search" << endl
          << "3. Insert person" << endl
          << "4. Delete person" << endl
-         << "5. Quit" << endl;
-
+         << "5. Save and quit" << endl
+         << "6. Quit" << endl;
     int inputid = cin.readLine().toInt();
 
 
@@ -171,7 +199,11 @@ void ConsoleUI::start() {
         break;
     case 4: Delete();
         break;
-    case 5: return;
+    case 5:
+        savefile();
+    case 6:
+        quitmsg();
+        return;
         break;
     default:
         cout << "Invalid input." << endl;
