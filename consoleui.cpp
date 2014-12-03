@@ -56,6 +56,8 @@ void ConsoleUI::Delete()
 
 void ConsoleUI::Print(QVector<person> result)
 {
+    cout << "ID\tName\t\t\t\tGender\tBorn\tDied" << endl;
+    cout << "_______________________________________________________________________" << endl;
 
     foreach(person item, result)
     {
@@ -63,18 +65,25 @@ void ConsoleUI::Print(QVector<person> result)
        QString died;
        if(item.gender == 0) gender = "Male";
        else gender = "Female";
-       if (item.year_death == 0) died = " is still alive and computing";
+       if (item.year_death == 0) died = "-";
        else {
            died = QString::number(item.year_death);
        }
 
-       cout << endl << "ID: " << item.id << "\n"
-       << "Name: " << item.name << "\n"
-       << "Gender: " << gender << "\n"
-       << "Year born: " << item.year_born << "\t"
-       << "Year died: " << died << endl;
+
+       cout << item.id << "\t"
+            << item.name << "\t\t\t"
+            << gender << "\t"
+            << item.year_born << "\t"
+            << died << endl;
+
+//       cout << endl << "ID: " << item.id << "\n"
+//       << "Name: " << item.name << "\n"
+//       << "Gender: " << gender << "\n"
+//       << "Year born: " << item.year_born << "\t"
+//       << "Year died: " << died << endl;
     }
-       cout << "_____" << endl;
+       cout << "_______________________________________________________________________" << endl;
 }
 
 void ConsoleUI::List()
