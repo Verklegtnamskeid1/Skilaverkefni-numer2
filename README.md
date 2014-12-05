@@ -1,54 +1,49 @@
-Skilverefni1
-============
-Skellti í smá síðu á wikinu:
-https://github.com/Verklegtnamskeid1/Skilverefni1/wiki/klassaskilgreiningar
+ 	
+Skil 2
 
+Kerfið skal geta gert allt það sem hægt var í fyrsta verkefninu.
 
-Fyrsta skilaverkefnið
+Þar að auki:
 
-Hugmyndir: 
+    Þarf að skipta gagnalagi út fyrir SQL repository (sterklega mælt með því að nota SQLite). Ath. að þetta er krafa sem verður að uppfylla til að fá einkunn fyrir verkefnið.
 
-* Nota qstring (https://qt-project.org/doc/qt-4.7/qstring.html) en ekki string – qstring styður utf8 
-* 
+    Notandi þarf að geta skráð þekktar tölvur úr sögu tölvunarfræðinnar. Það sem þarf að vera hægt að skrá er:
 
-struct person {
-  int id;
-  QString name;
-  int year_born;
-  int year_death;
-} ;
+        Nafn
 
-Það sem við þurfum er:
+        Byggingarár
 
-* Eitthvað sem birtir allar færslur (hægt að sortera eftir dánar- og fæðingarári, kyn og nafni. 
-** Það veðrur líka að vera hægt að leita
-* Eitthvað sem getur tekið við inputi og bætt við í einhverja C++ drullu
-* Eitthvað sem opnar skjal (t.d. csv: http://en.wikipedia.org/wiki/Comma-separated_values skjal) og setur í C++ drulluna
-* Eitthvað sem tekur C++ drulluna og vistar í skjalið
+        Tegund tölvu (Mekkanísk, Elektrónísk, Smáravélar (þ.e. þær sem nota transistora), etc.)
 
-* Uhh, svo þarf auðvitað að passa að notendaviðmótið sé allt AÐGREINT frá virkni svo við getum auðveldlega portað þessu á Android og allt moðerfökkingdrasl
+        Var hún byggð eða ekki?
 
-2 like
+    Þegar listi er birtur notandanum þá fær hann að ráða hvernig honum er raðað.
 
-Verkefnalýsing
-============
+    Notandi þarf að geta leitað að tölvu.
 
-Í þessum hluta skal skrifa console forrit með eftirfarandi kröfur til virkni:
+    Notandi þarf að geta tengt saman tölvur og persónur
 
-    Notandi skal geta skráð þekktar persónur úr sögu tölvunarfræðinnar. Að lágmarki skal vera hægt að skrá eftirfarandi gögn um sérhverja persónu: nafn, kyn, fæðingarár og dánarár.
-    Forritið skal geta birt lista af þeim persónum sem skráðar hafa verið.
-    Forritið skal geyma listann, þannig að hann týnist ekki þó forritinu sé lokað.
-    Hægt skal vera að leita í listanum.
-    Þegar listinn er birtur, skal bjóða notandanum að velja hvernig hann skuli raðaður.
+        Hver persóna getur verið tengd mörgum tölvum
+
+        Hver tölva getur verið tengt mörgum persónum
 
 Þá eru gerðar eftirfarandi kröfur að auki:
 
     Nota skal lagskipta högun við útfærslu kerfisins.
-    Kóðinn skal hýstur með Git (GitHub, Bitbucket, etc.)
-    Nota skal Qt Creator við útfærslu (sjá betur síðar í námskeiðinu).
-    Kóðinn skal vera lesanlegur, vel formaður, vel skjalaður, og viðhaldanlegur.
 
-Skila skal lokaútgáfu kóðans í einni .zip/.rar skrá, ásamt upplýsingum um það hvar kóðann er að finna, þ.e. á GitHub/BitBucket etc. Þá skal fylgja með keyranleg útgáfa kerfisins, ásamt gagnaskrá með a.m.k. 10 færslum.
+    Kóðinn skal hýstur með Git (GitHub, Bitbucket, etc.), nota skal Git í gegnum allt ferlið.
 
+    Nota skal Qt Creator við útfærslu.
 
-Skilafrestur til miðvikudagsins 3 des kl 10:00
+    Nota skal sqlite sem gagnalag
+
+    Kóðinn skal vera lesanlegur, vel formaður, vel skjalaður, og viðhaldanlegur, og að samræmi sé í forritunarstíl, til dæmis:
+
+        Rétt inndreginn
+
+        Samræmi í staðsetningu á slaufusvigum
+
+        Stíll við nafnagiftir á breytum, föllum og klösum
+
+        Athugasemdir lýsandi en í hófi. Lýsa af hverju kóðinn er eins og hann er, en ekki hvað hann gerir
+        o.s.frv.
