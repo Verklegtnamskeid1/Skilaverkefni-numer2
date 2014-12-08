@@ -226,7 +226,7 @@ void ConsoleUI::start()
          << "2. Search" << endl
          << "3. Insert person" << endl
          << "4. Delete person" << endl
-         << "5. Save and quit" << endl
+         << "5. Save" << endl
          << "6. Quit" << endl;
     int inputid = cin.readLine().toInt();
 
@@ -243,6 +243,7 @@ void ConsoleUI::start()
         break;
     case 5:
         savefile();
+        break;
     case 6:
         quitmsg();
         return;

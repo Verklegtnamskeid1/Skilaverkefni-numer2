@@ -1,15 +1,22 @@
 #include "main.h"
 #include "consoleui.h"
+#include "sqlite.h"
 
 int main()
 {
-/* færa sk1data gogn yfir í consoleui */
+
+    QTextStream cout;
+
+    sqlite ble = sqlite();
+
+
+    /* færa sk1data gogn yfir í consoleui */
     /* Þetta opnar skjalið og hendir því inn */
 
     /* Starta console */
-    ConsoleUI ui = ConsoleUI();
+    /* ConsoleUI ui = ConsoleUI();
     ui.start();
-
+*/
 
     /* Vista skjalið og hætta */
     return 0;

@@ -1,4 +1,5 @@
-QT	 += core
+QT	 += core sql
+CONFIG += c++11
 
 QT	 -= gui
 
@@ -12,13 +13,15 @@ TEMPLATE = app
 SOURCES += main.cpp \
     sk1data.cpp \
     consoleui.cpp \
-    cvs.cpp
+    cvs.cpp \
+    sqlite.cpp
 
 HEADERS += \
     main.h \
     sk1data.h \
-    consoleui.h
+    consoleui.h \
+    sqlite.h
 
 OTHER_FILES += \
-    sk1data.txt
+    Skil2.sqlite
 
