@@ -95,7 +95,70 @@ void ConsoleUI::List()
 }
 
 
+void ConsoleUI::Add()
+{
 
+    cout << "\nInsert" << endl
+         << "0: Person" << endl
+         << "1: Computer" << endl
+         << "2: Connection"<<endl;
+    int input = cin.readLine().toInt();
+
+
+
+    switch(input){
+    case 0: AddPerson();
+        break;
+    case 1: AddComputer();
+        break;
+    case 2: AddConnection();
+        break;
+
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+    cout << endl;)
+}
+void ConsoleUI::AddComputer(){
+    cout <<"\nEnter name:"<<endl;
+
+
+    cout <<"\nEnter type:"<<endl;
+
+    cout <<"\nEnter year built:"<<endl;
+
+    cout <<"\nWas it built?:"<<endl;
+
+}
+void ConsoleUI::AddConnection() {
+
+
+    cout <<"\nEnter how you want to create a connection"<<endl;
+         << "0: by person ID" << endl
+         << "1: by computer ID" << endl
+            int conect = cin.readLine().toInt();
+
+
+
+    switch(inputid){
+    case 1: connectionperson();
+        break;
+    case 2: connectioncomputer();
+        break;
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+    cout << endl;
+}
+void ConsoleUI::connectionperson()
+{
+
+}
+void ConsoleUI::connectioncomputer()
+{
+}
 void ConsoleUI::AddPerson()
 {
     cout << "\nEnter name:" << endl;
@@ -258,8 +321,8 @@ void ConsoleUI::Search()
              << "Choose one of the following:" << endl
              << "1. List" << endl
              << "2. Search" << endl
-             << "3. Insert person" << endl
-             << "4. Delete person" << endl
+             << "3. Insert " << endl
+             << "4. Delete " << endl
              << "5. Save" << endl
              << "6. Quit" << endl;
         int inputid = cin.readLine().toInt();
@@ -271,7 +334,7 @@ void ConsoleUI::Search()
             break;
         case 2: Search();
             break;
-        case 3: AddPerson();
+        case 3: Add();
             break;
         case 4: Delete();
             break;
