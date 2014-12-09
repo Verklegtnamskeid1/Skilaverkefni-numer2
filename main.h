@@ -2,7 +2,6 @@
 #define MAIN_H
 #include <QtCore>
 
-
 /* person er skilgreining á færslunum um einstaklingana
  * sem við vinnum með
  * tekur einsog er:
@@ -23,7 +22,6 @@
   person jonthor = person(1,QString("Jón Þór", 1, 1984,3050);
 */
 
-
 struct person
 {
        int id;
@@ -42,10 +40,7 @@ struct person
        {}
        person()
        {}
-
-
 };
-
 
 /* Til að bæta læsileika á virkni sk1data (og seinna meir sambærilegra klassa */
 static const int GET_ALL = 100;
@@ -70,7 +65,6 @@ static const int SORTY_BY [5] = { SORT_BY_ID, SORT_BY_NAME,
 static const int GET_BY [5]  = {GET_BY_ID, GET_BY_NAME,
                                 GET_BY_GENDER, GET_BY_YEARBORN,
                                 GET_BY_YEARDEATH};
-
 
 static const int OUTPUT_ERROR = -99; /* Ónotað einsog er */
 

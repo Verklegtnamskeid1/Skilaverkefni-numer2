@@ -32,7 +32,6 @@ private:
     void savefile();
     void quitmsg();
     searchdef DefineSearch();
-
 };
 
 extern QTextStream cout;

@@ -2,9 +2,9 @@
 #define SQLITE_H
 #include <QtSql>
 
-static const int PERSONS_TABLE 0;
-static const int OWNERS_TABLE 1;
-static const int COMPUTERS_TABLE 2;
+static const int PERSONS_TABLE = 0;
+static const int OWNERS_TABLE = 1;
+static const int COMPUTERS_TABLE = 2;
 
 
 
@@ -13,7 +13,7 @@ class sqlite
 {
 public:
     sqlite();
-    get_
+    //get_
 
 private:
    const QString table = "Persons, Owners, Computers";
