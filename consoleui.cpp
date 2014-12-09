@@ -31,16 +31,79 @@ QString ConsoleUI::DefineSearch()
     return DefineSearchConnection();
 }
 
+QString ConsoleUI::DefineSearchPersons()
+{
+    cout << "\nHow shall I sort the results:" << endl
+         << "0: By ID" << endl
+         << "1: By name" << endl
+         << "2: By gender" << endl
+         << "3: By year born" << endl
+         << "4: By year died" << endl
+         << "";
 
+    int SearchInput = cin.readLine().toInt();
 
-QString ConsoleUI::DefineSearchPersons(){
-    return "Persons_ID";
-}
-QString ConsoleUI::DefineSearchComputer(){
-}
-QString ConsoleUI::DefineSearchConnection(){
-}
+    switch(SearchInput){
+    case 0: return "Persons_ID";
+        break;
+    case 1: return "Persons_Name";
+        break;
+    case 2: return "Persons_Gender";
+        break;
+    case 3: return "Persons_YearBorn";
+        break;
+    case 4: return "Persons_YearDeath";
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
 
+}
+QString ConsoleUI::DefineSearchComputer()
+{
+    cout << "\nHow shall I sort the results:" << endl
+         << "0: By ID" << endl
+         << "1: By name" << endl
+         << "2: By type" << endl
+         << "3: By year built" << endl
+         << "4: By whether it was built or not" << endl
+         << "";
+
+    int SearchInput = cin.readLine().toInt();
+
+    switch(SearchInput){
+    case 0: return "Computers_ID";
+        break;
+    case 1: return "Computers_Name";
+        break;
+    case 2: return "Computers_Type";
+        break;
+    case 3: return "Computers_YearBuilt";
+        break;
+    case 4: return "Computers_BuiltOrNot";
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+}
+QString ConsoleUI::DefineSearchConnection()
+{
+    cout << "\nHow shall I sort the results:" << endl
+         << "0: By person ID" << endl
+         << "1: By computer ID" << endl
+
+    int SearchInput = cin.readLine().toInt();
+
+    switch(SearchInput){
+    case 0: return "Persons_ID";
+        break;
+    case 1: return "Computers_ID";
+        break;
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+}
 /* searchdef ConsoleUI::DefineSearch()
 {
 
