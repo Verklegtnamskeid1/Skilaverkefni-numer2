@@ -95,37 +95,6 @@ void ConsoleUI::List()
 }
 
 
-void ConsoleUI::add()
-{
-
-    cout << "\nInsert" << endl
-         << "0: Person" << endl
-         << "1: Computer" << endl
-         << "2: Connection"<<endl;
-    int input = cin.readLine().toInt();
-
-
-
-    switch(input){
-    case 0: AddPerson();
-        break;
-    case 1: AddComputer();
-        break;
-    case 2: AddConnection();
-        break;
-
-    default:
-        cout << "Invalid input." << endl;
-        break;
-    }
-    cout << endl;)
-}
-void ConsoleUI::AddComputer(){
-
-}
-void ConsoleUI::AddConnection() {
-
-}
 
 void ConsoleUI::AddPerson()
 {
@@ -202,37 +171,36 @@ void ConsoleUI::Search()
          << "4: in field year died" << endl;
 
 
-/*
-    1: List
-        1: Person				1: ID 2: Name 3: Gender 4: Born 5: Death					1: ASCENDING 2: DESCENDING
-        2: Computer				1: ID 2: Name 3: Type 4: YearBuilt 5: Builtornot-Y/N			1: ASC 2: DESC
-        3: Connection			1: Computers -> 1: ID -> COMPUTERNAME was made by PERSONS... 2: Persons -> 1:ID.. -> PERSONNAME made COMPUTERNAME
 
-    2: Search
-        1: Person				By 1: ID 2: Name 3: Gender 4: YearBorn 5: YearDeath
-        2: Computer				By 1: ID 2: Name 3: Type 4: YearBuilt 5: Builtornot
-        3: Connection			By 1: Computername ( Computer was built by Persons_name), 2: Persons_name(has built computers_name)
+    //Hugmyndir með UI
+        //cout<< "\nSearch << endl
+         //<<"0: by computers
+         //<<"1: by person
+         //<<"2: owner by id
+        // if(input==0)
+        // cout<<"\nSearch"<<endl
+        //<<"0: in field id
+        //<<"1: in field name
+         //<<"2: in field year built
+         //<<"3: built or not
+
+        // if(input==1)
+        // cout<<"\nSearch"<<endl
+        //<<"0: in field id
+        //<<"1: in field name
+        //<<"2: in field gender
+        //<<"3: in field year born
+        //<<"3: in field year died
+
+        // if(input==2)
+        // cout<<"\nSearch"<<endl
+        //<<"0: in field id
+        //<<"1: in field name
+        //<<"2: in field type
+        //<<"3: in field built
+        //<<"4: in field not built
 
 
-    3: Insert
-        1: Person				Enter name, Enter Gender(0 male, 1 female), Enter year born, Enter year dead
-        2: Computer 			Enter name, enter type, enter year built (Electronic 0,Mechanical 1,Electro-mechanical 2,
-                                Transistor 3, Other 4), was it built? Y/N,
-
-        3: Connection			By 1: Computer ID 2: Person ID
-                                If 1: Enter the Computer's ID you want to connect to a person.	-> Enter Computer ID -> Now enter the person's ID you want to connect to COMPUTERNAME
-                                If 2: Enter the Person's ID you want to connect to a computer. -> Enter Persons ID -> Now enter the computer's ID you want to connect to PERSONNAME
-    4: Delete
-        1: Person				Enter the ID of the person you want to delete.
-        2: Computer				Enter the ID of the computer you want to delete.
-        3: Connection			Enter the ID of the computer which connection you want to delete.
-
-    5: Save
-
-    6: Quit
-
-
-*/
 
 
 
@@ -285,71 +253,13 @@ void ConsoleUI::Search()
     {
         loadfile();
 
-
-        /*
-         * Bara til að hafa hvernig við hugsum að þetta eigi að líta út
-         *
-         *      cout << "Welcome!" << endl
-             << "Choose one of the following:" << endl
-             << "1. List" << endl
-             << "2. Search" << endl
-             << "3. Insert <<endl
-             << "4. Delete" << endl
-             << "5. Save" << endl
-             << "6. Quit" << endl;
-
-
-             if (input = 1)
-
-       ( cout<<"\nList"<<endl
-        <<"0: the computers
-        <<"1: the persons
-        <<2: both
-        <<3: by owners
-        Og útfrá þessu verður:
-        Input = 0
-        <<"0: by year built
-        <<"1: built or not
-        <<"2: by id
-        <<"3: by name
-        <<"4: by type)
-
-
-       ( Input ==1
-        Eins og áður nema viðbættum möguleiki af
-        <<5: by computers built )
-
-        Input == 2
-        //cout<< "\nSearch << endl
-         //<<"0: by computers
-         //<<"1: by person
-         //<<"2: owner by id
-        Sjá fyrir ofan
-    *
-    * Input == 3
-    * (cout<< "\nInsert << endl
-         <<"0: computer
-         <<"1: person
-         <<"2: owner )
-
-
-         Insert == 4
-
-       ( cout<<"\nDelete"<<endl
-        <<"0: a computer
-        <<"1: a person
-        <<2:  a owner )
-
-                */
-
-
         while(1){
         cout << "Welcome!" << endl
              << "Choose one of the following:" << endl
              << "1. List" << endl
              << "2. Search" << endl
-             << "3. Insert" << endl
-             << "4. Delete " << endl
+             << "3. Insert person" << endl
+             << "4. Delete person" << endl
              << "5. Save" << endl
              << "6. Quit" << endl;
         int inputid = cin.readLine().toInt();
@@ -361,7 +271,7 @@ void ConsoleUI::Search()
             break;
         case 2: Search();
             break;
-        case 3: Add();
+        case 3: AddPerson();
             break;
         case 4: Delete();
             break;
