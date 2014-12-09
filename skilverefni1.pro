@@ -1,4 +1,5 @@
 QT	 += core sql
+#compæla með c++11 stuðning
 CONFIG += c++11
 
 QT	 -= gui
@@ -23,5 +24,6 @@ HEADERS += \
     sqlite.h
 
 OTHER_FILES += \
-    Skil2.sqlite
+    Skil2.sqlite \
+    backup.txt
 

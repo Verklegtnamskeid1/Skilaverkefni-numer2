@@ -95,7 +95,70 @@ void ConsoleUI::List()
 }
 
 
+void ConsoleUI::Add()
+{
 
+    cout << "\nInsert" << endl
+         << "0: Person" << endl
+         << "1: Computer" << endl
+         << "2: Connection"<<endl;
+    int input = cin.readLine().toInt();
+
+
+
+    switch(input){
+    case 0: AddPerson();
+        break;
+    case 1: AddComputer();
+        break;
+    case 2: AddConnection();
+        break;
+
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+    cout << endl;)
+}
+void ConsoleUI::AddComputer(){
+    cout <<"\nEnter name:"<<endl;
+
+
+    cout <<"\nEnter type:"<<endl;
+
+    cout <<"\nEnter year built:"<<endl;
+
+    cout <<"\nWas it built?:"<<endl;
+
+}
+void ConsoleUI::AddConnection() {
+
+
+    cout <<"\nEnter how you want to create a connection"<<endl;
+         << "0: by person ID" << endl
+         << "1: by computer ID" << endl
+            int conect = cin.readLine().toInt();
+
+
+
+    switch(conect){
+    case 1: connectionperson();
+        break;
+    case 2: connectioncomputer();
+        break;
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+    cout << endl;
+}
+void ConsoleUI::connectionperson()
+{
+
+}
+void ConsoleUI::connectioncomputer()
+{
+}
 void ConsoleUI::AddPerson()
 {
     cout << "\nEnter name:" << endl;
@@ -113,10 +176,12 @@ void ConsoleUI::AddPerson()
     cout << endl << "Enter year born:" << endl;
     int yearborn = cin.readLine().toInt();
 
+    QString yn;
     if (gender == 0) cout << "Is he dead? (y/n Y/N)" << endl;
     else cout << "Is she dead? (y/n Y/N)" << endl;
-    QString yn = cin.readLine();
+    yn = cin.readLine();
     int yeardead;
+
 
     if (yn == "Y" || yn == "y")
     {
@@ -143,7 +208,16 @@ void ConsoleUI::AddPerson()
 
     yeardead = -1 ? yeardead : 0;
 
-    QString yeardeadstring = 0 ? QString::number(yeardead) : "Still alive";
+
+    QString yeardeadstring;
+
+    if (yn == "Y" || yn == "y"){
+        yeardeadstring = QString::number(yeardead);
+    }
+    else
+    {
+        yeardeadstring = "Still alive";
+    }
 
     cout
          << "Name: " << name << endl
@@ -170,35 +244,6 @@ void ConsoleUI::Search()
          << "3: in field year born" << endl
          << "4: in field year died" << endl;
 
-
-
-    //Hugmyndir með UI
-        //cout<< "\nSearch << endl
-         //<<"0: by computers
-         //<<"1: by person
-         //<<"2: owner by id
-        // if(input==0)
-        // cout<<"\nSearch"<<endl
-        //<<"0: in field id
-        //<<"1: in field name
-         //<<"2: in field year built
-         //<<"3: built or not
-
-        // if(input==1)
-        // cout<<"\nSearch"<<endl
-        //<<"0: in field id
-        //<<"1: in field name
-        //<<"2: in field gender
-        //<<"3: in field year born
-        //<<"3: in field year died
-
-        // if(input==2)
-        // cout<<"\nSearch"<<endl
-        //<<"0: in field id
-        //<<"1: in field name
-        //<<"2: in field type
-        //<<"3: in field built
-        //<<"4: in field not built
 
 
 
@@ -258,8 +303,8 @@ void ConsoleUI::Search()
              << "Choose one of the following:" << endl
              << "1. List" << endl
              << "2. Search" << endl
-             << "3. Insert person" << endl
-             << "4. Delete person" << endl
+             << "3. Insert " << endl
+             << "4. Delete " << endl
              << "5. Save" << endl
              << "6. Quit" << endl;
         int inputid = cin.readLine().toInt();
@@ -271,7 +316,7 @@ void ConsoleUI::Search()
             break;
         case 2: Search();
             break;
-        case 3: AddPerson();
+        case 3: Add();
             break;
         case 4: Delete();
             break;

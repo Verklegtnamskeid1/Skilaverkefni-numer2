@@ -2,13 +2,20 @@
 #define SQLITE_H
 #include <QtSql>
 
+<<<<<<< HEAD
 
 
+=======
+static const int PERSONS_TABLE = 0;
+static const int OWNERS_TABLE = 1;
+static const int COMPUTERS_TABLE = 2;
+>>>>>>> fb0681e7884f49937866440529420a83fa6fc9b2
 
 class sqlite
 {
 public:
     sqlite();
+<<<<<<< HEAD
     static const QString ASC;
     static const QString DESC;
     static const int PERSONS_TABLE;
@@ -23,6 +30,9 @@ public:
                        QHash<QString,QString> WHAT,
                        QHash<QString,QString> SORT);
 
+=======
+    //get_
+>>>>>>> fb0681e7884f49937866440529420a83fa6fc9b2
 
 private:
    static const QStringList tables;
