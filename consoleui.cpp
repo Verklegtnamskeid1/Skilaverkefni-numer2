@@ -312,6 +312,26 @@ void ConsoleUI::AddPerson()
 
 void ConsoleUI::Search()
 {
+    cout << "What do you want to search for?" << endl
+         << "0: A person" << endl
+         << "1: A computer" << endl
+         << "2: A connection" << endl;
+
+    int SearchInput = cin.readLine().toInt();
+
+    switch(SearchInput){
+    case 0: SearchPerson();
+        break;
+    case 1: SearchComputer();
+        break;
+    case 2: SearchConnection();
+        break;
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+
+    /*
     cout << "\nSearch" << endl
          << "0: in field id" << endl
          << "1: in field name" << endl
@@ -337,9 +357,19 @@ void ConsoleUI::Search()
        QVector<person> results =   gogn.query(inputid, searchstring,
                                    search.sort, search.sortby);
        Print(results);
-
+    */
 
     }
+
+void ConsoleUI::SearchPerson()
+{
+}
+void ConsoleUI::SearchComputer()
+{
+}
+void ConsoleUI::SearchConnection()
+{
+}
 
 
     void ConsoleUI::quitmsg()
