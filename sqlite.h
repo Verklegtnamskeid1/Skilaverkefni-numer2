@@ -7,7 +7,6 @@ class sqlite
 {
 public:
     sqlite();
-<<<<<<< HEAD
     static const QString ASC;
     static const QString DESC;
     static const int PERSONS_TABLE;
