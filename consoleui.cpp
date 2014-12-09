@@ -8,7 +8,15 @@ ConsoleUI::ConsoleUI()
 QString ConsoleUI::DefineSearch()
 {
     return DefineSearchPersons();
+    return DefineSearchComputer();
+    return DefineSearchConnection();
+}
 
+QString ConsoleUI::DefineSearchPersons(){
+}
+QString ConsoleUI::DefineSearchComputer(){
+}
+QString ConsoleUI::DefineSearchConnection(){
 }
 
 /* searchdef ConsoleUI::DefineSearch()
@@ -337,18 +345,6 @@ void ConsoleUI::Search()
     }
 
     /*
-    cout << "\nSearch" << endl
-         << "0: in field id" << endl
-         << "1: in field name" << endl
-         << "2: in field gender" << endl
-         << "3: in field year born" << endl
-         << "4: in field year died" << endl;
-
-
-
-
-
-
        QString input = cin.readLine();
        int inputid = input.toInt();
        if (inputid > 4 || inputid < 0 ) inputid = 1;
@@ -368,12 +364,33 @@ void ConsoleUI::Search()
 
 void ConsoleUI::SearchPerson()
 {
+    cout << "\nSearch" << endl
+         << "0: in field ID" << endl
+         << "1: in field name" << endl
+         << "2: in field gender" << endl
+         << "3: in field year born" << endl
+         << "4: in field year died" << endl;
+
+    int SearchInput = cin.readLine().toInt();
 }
 void ConsoleUI::SearchComputer()
 {
+    cout << "\nSearch" << endl
+         << "0: in field ID" << endl
+         << "1: in field name" << endl
+         << "2: in field type" << endl
+         << "3: in field year built" << endl
+         << "4: in field was it built or not?" << endl;
+
+    int SearchInput = cin.readLine().toInt();
 }
 void ConsoleUI::SearchConnection()
 {
+    cout << "\nSearch" << endl
+         << "0: in field person ID" << endl
+         << "1: in field computer ID" << endl
+
+    int SearchInput = cin.readLine().toInt();
 }
 
 

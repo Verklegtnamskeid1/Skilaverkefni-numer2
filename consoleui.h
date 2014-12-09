@@ -45,6 +45,9 @@ private:
     void SearchPerson();
     void SearchComputer();
     void SearchConnection();
+    QString DefineSearchPersons();
+    QString DefineSearchComputer();
+    QString DefineSearchConnection();
 };
 
 extern QTextStream cout;
