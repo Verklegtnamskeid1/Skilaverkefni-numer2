@@ -4,7 +4,6 @@ sk2data::sk2data()
 {
 }
 
-
 void sk2data::AddPerson(QString name, int gender, int yearborn, int yeardead)
 {
     QHash<QString, QString> buffer;
@@ -15,7 +14,7 @@ void sk2data::AddPerson(QString name, int gender, int yearborn, int yeardead)
     connection.insert("persons", buffer);
 }
 
-void AddComputer(QString name, int type, int yearbuilt, int builtornot)
+void sk2data::AddComputer(QString name, int type, int yearbuilt, int builtornot)
 {
     QHash<QString, QString> buffer;
     buffer.insert("Computers_Name", name);
@@ -24,32 +23,13 @@ void AddComputer(QString name, int type, int yearbuilt, int builtornot)
     buffer.insert("Computers_BuiltOrNot", QString::number(builtornot));
     connection.insert("computers", buffer);
 }
-void AddConnection(int personid, int computerid);
+void sk2data::AddConnection(int personid, int computerid)
 {
     QHash<QString, QString> buffer;
     buffer.insert("Persons_ID", QString::number(personid));
     buffer.insert("Computers_ID", QString::number(computerid));
     connection.insert("owners", buffer);
 }
-
-
-void sk2data::AddComputer(QString name, int type, int yearbuilt, int builtornot)
-{
-QHash<QString, QString> buffer;
-buffer.insert("Computers_Name", name);
-buffer.insert("Computers_Type", QString::number(type));
-buffer.insert("Computers_YearBuilt", QString::number(yearbuilt));
-buffer.insert("Computers_BuiltOrNot", QString::number(builtornot));
-connection.insert("computers", buffer);
-}
-void sk2data::AddConnection(int personid, int computerid)
-{
-QHash<QString, QString> buffer;
-buffer.insert("Persons_ID", QString::number(personid));
-buffer.insert("Computers_ID", QString::number(computerid));
-connection.insert("owners", buffer);
-}
-
 
 QVector<QHash<QString, QString> > sk2data::QueryPerson(QString row="Persons_ID", bool asc = true)
 {

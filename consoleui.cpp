@@ -90,7 +90,7 @@ QString ConsoleUI::DefineSearchConnection()
 {
     cout << "\nHow shall I sort the results:" << endl
          << "0: By person ID" << endl
-         << "1: By computer ID" << endl
+         << "1: By computer ID" << endl;
 
     int SearchInput = cin.readLine().toInt();
 
