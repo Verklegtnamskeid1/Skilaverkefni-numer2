@@ -100,36 +100,20 @@ void ConsoleUI::DeleteConnection(int deleteID)
 
 
 
-void ConsoleUI::Print()
+void ConsoleUI::Print(QVector<QMap<QString, QString> > buffer)
 {
+
+    foreach (auto item, buffer)
+    {
+        foreach (QString string, buffer.key())
+        {}
+
+    }
+
     cout << "ID\tName\t\t\t\tGender\tBorn\tDied" << endl;
     cout << "_______________________________________________________________________" << endl;
 
-    /*foreach(person item, result)
-    {
-       QString gender;
-       QString died;
-       if(item.gender == 0) gender = "Male";
-       else gender = "Female";
-       if (item.year_death == 0) died = "-";
-       else {
-           died = QString::number(item.year_death);
-       }
-
-
-       cout << item.id << "\t"
-            << item.name << "\t\t\t"
-            << gender << "\t"
-            << item.year_born << "\t"
-            << died << endl;
-
-//       cout << endl << "ID: " << item.id << "\n"
-//       << "Name: " << item.name << "\n"
-//       << "Gender: " << gender << "\n"
-//       << "Year born: " << item.year_born << "\t"
-//       << "Year died: " << died << endl;
-    }*/
-       cout << "_______________________________________________________________________" << endl;
+    cout << "_______________________________________________________________________" << endl;
 
 }
 
@@ -158,10 +142,11 @@ void ConsoleUI::List()
 
 void ConsoleUI::ListPerson()
 {
+    QVector<QMap<QString, QString> > buffer = gogn.QueryPerson();
     // searchdef search = DefineSearch();
     /*QVector<person> results =   gogn.query(GET_ALL, QString(""),
                                 search.sort, search.sortby); */
-    //Print(results);
+    Print(buffer);
 }
 
 void ConsoleUI::ListComputer()
@@ -316,7 +301,7 @@ void ConsoleUI::AddPerson()
     yn = cin.readLine();
     if (yn == "Y" || yn == "y")
     {
-        //gogn.add_person(name, gender, yearborn, yeardead);
+        gogn.AddPerson(name, gender, yearborn, yeardead);
         cout << "\nPerson added!" << endl;
     }
     else
@@ -388,7 +373,7 @@ void ConsoleUI::SearchConnection()
 {
     cout << "\nSearch" << endl
          << "0: in field person ID" << endl
-         << "1: in field computer ID" << endl
+         << "1: in field computer ID" << endl;
 
     int SearchInput = cin.readLine().toInt();
 }

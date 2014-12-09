@@ -11,9 +11,7 @@ public:
     sqlite();
     static const QString ASC;
     static const QString DESC;
-    static const int PERSONS_TABLE;
-    static const int OWNERS_TABLE;
-    static const int COMPUTERS_TABLE;
+
     QHash<QString, QString> DefaultSort;
     QHash<QString,QString> EmptySearch;
     void test();

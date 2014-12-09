@@ -190,7 +190,6 @@ void sqlite::insert(QString TABLE, QHash<QString, QString> insert)
 
 
 
-    qDebug() << sql;
 
 }
 
@@ -213,9 +212,6 @@ void sqlite::test()
 const QString sqlite::ASC = QString("ASC");
 const QString sqlite::DESC = QString("DESC");
 
-const int sqlite::PERSONS_TABLE = 0;
-const int sqlite::OWNERS_TABLE = 1;
-const int sqlite::COMPUTERS_TABLE = 2;
 
 const QStringList sqlite::tables = {"persons", "owners", "computers"};
 

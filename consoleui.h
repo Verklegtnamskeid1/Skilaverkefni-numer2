@@ -24,7 +24,7 @@ private:
     void List();
     void Search();
     void AddPerson();
-    void Print();
+    void Print(QVector<QMap<QString, QString> > buffer);
     void Delete();
 
     sk2data gogn;
