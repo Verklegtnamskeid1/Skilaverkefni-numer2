@@ -4,20 +4,8 @@
 
 int main()
 {
-
-    QTextStream cout;
-
-    sqlite ble = sqlite();
-    ble.test();
-
-    /* færa sk1data gogn yfir í consoleui */
-    /* Þetta opnar skjalið og hendir því inn */
-
-    /* Starta console */
-    /* ConsoleUI ui = ConsoleUI();
+    ConsoleUI ui = ConsoleUI();
     ui.start();
-*/
 
-    /* Vista skjalið og hætta */
     return 0;
 }
