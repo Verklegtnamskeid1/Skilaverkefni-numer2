@@ -3,6 +3,8 @@
 #include <QtSql>
 
 
+
+
 class sqlite
 {
 public:
@@ -20,7 +22,6 @@ public:
     QHash<int, QHash<QString, QString> > query(QString TABLE,
                        QHash<QString,QString> WHAT,
                        QHash<QString,QString> SORT);
-
 
 
 private:
@@ -43,11 +44,6 @@ private:
     * Computers_ID(int) Name(string) YearBuilt (int) Type (string) BuiltOrNot(bool)
 */
    QSqlDatabase db;
-
-
-
-
-
 };
 
 #endif // SQLITE_H
