@@ -22,6 +22,7 @@ public:
     QHash<int, QHash<QString, QString> > query(QString TABLE,
                        QHash<QString,QString> WHAT,
                        QHash<QString,QString> SORT);
+    void deleteid(QString TABLE, QString row, int id);
 
 
 private:

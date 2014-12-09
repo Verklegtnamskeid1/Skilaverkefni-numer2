@@ -1,6 +1,6 @@
 #ifndef SK2DATA_H
 #define SK2DATA_H
-
+#include "main.h"
 class sk2data
 {
 public:

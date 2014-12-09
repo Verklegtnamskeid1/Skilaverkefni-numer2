@@ -13,7 +13,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     consoleui.cpp \
-    cvs.cpp \
     sqlite.cpp \
     sk2data.cpp
 

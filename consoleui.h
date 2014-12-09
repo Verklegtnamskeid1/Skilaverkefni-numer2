@@ -30,7 +30,7 @@ private:
     sk2data gogn;
 
     void quitmsg();
-    searchdef DefineSearch();
+    QString DefineSearch();
     void ComputerConnection();
     void PersonConnection();
     void AddConnection();

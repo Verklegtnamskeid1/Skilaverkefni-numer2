@@ -108,7 +108,7 @@ QHash<int, QHash<QString, QString> > sqlite::query(QString TABLE,
 }
 
 /* DELETE */
-void sqlite::delete(QString TABLE, QString row, int id)
+void sqlite::deleteid(QString TABLE, QString row, int id)
 {
     if (!tables.contains(TABLE))
     {

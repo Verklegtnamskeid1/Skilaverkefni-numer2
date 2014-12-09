@@ -5,6 +5,11 @@ ConsoleUI::ConsoleUI()
 {
 }
 
+QString ConsoleUI::DefineSearch()
+{
+    return DefineSearchPersons();
+
+}
 
 /* searchdef ConsoleUI::DefineSearch()
 {
@@ -145,7 +150,7 @@ void ConsoleUI::List()
 
 void ConsoleUI::ListPerson()
 {
-    searchdef search = DefineSearch();
+    // searchdef search = DefineSearch();
     /*QVector<person> results =   gogn.query(GET_ALL, QString(""),
                                 search.sort, search.sortby); */
     //Print(results);
