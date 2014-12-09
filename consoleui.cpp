@@ -346,8 +346,7 @@ void ConsoleUI::Search()
              << "2. Search" << endl
              << "3. Insert " << endl
              << "4. Delete " << endl
-             << "5. Save" << endl
-             << "6. Quit" << endl;
+             << "5. Quit" << endl;
         int inputid = cin.readLine().toInt();
 
 
@@ -362,9 +361,6 @@ void ConsoleUI::Search()
         case 4: Delete();
             break;
         case 5:
-            savefile();
-            break;
-        case 6:
             quitmsg();
             return;
             break;
