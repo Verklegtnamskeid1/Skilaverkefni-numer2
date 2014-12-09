@@ -42,6 +42,9 @@ private:
     void DeletePerson(int deleteID);
     void DeleteComputer(int deleteID);
     void DeleteConnection(int deleteID);
+    void SearchPerson();
+    void SearchComputer();
+    void SearchConnection();
 };
 
 extern QTextStream cout;
