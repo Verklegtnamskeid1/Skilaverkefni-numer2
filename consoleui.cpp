@@ -58,7 +58,7 @@ void ConsoleUI::Delete()
     int deleteID = cin.readLine().toInt();
 
     switch(pickdelete){
-    case 0: DeletePersons(deleteID);
+    case 0: DeletePerson(deleteID);
         break;
     case 1: DeleteComputer(deleteID);
         break;
@@ -87,12 +87,12 @@ void ConsoleUI::DeleteConnection(int deleteID)
 
 
 
-void ConsoleUI::Print(QVector<person> result)
+void ConsoleUI::Print()
 {
     cout << "ID\tName\t\t\t\tGender\tBorn\tDied" << endl;
     cout << "_______________________________________________________________________" << endl;
 
-    foreach(person item, result)
+    /*foreach(person item, result)
     {
        QString gender;
        QString died;
@@ -115,8 +115,9 @@ void ConsoleUI::Print(QVector<person> result)
 //       << "Gender: " << gender << "\n"
 //       << "Year born: " << item.year_born << "\t"
 //       << "Year died: " << died << endl;
-    }
+    }*/
        cout << "_______________________________________________________________________" << endl;
+
 }
 
 void ConsoleUI::List()
@@ -145,9 +146,9 @@ void ConsoleUI::List()
 void ConsoleUI::ListPerson()
 {
     searchdef search = DefineSearch();
-    QVector<person> results =   gogn.query(GET_ALL, QString(""),
-                                search.sort, search.sortby);
-    Print(results);
+    /*QVector<person> results =   gogn.query(GET_ALL, QString(""),
+                                search.sort, search.sortby); */
+    //Print(results);
 }
 
 void ConsoleUI::ListComputer()
@@ -209,9 +210,9 @@ void ConsoleUI::AddConnection() {
     int connect = cin.readLine().toInt();
 
     switch(connect){
-    case 0: connectionperson();
+    case 0: PersonConnection();
         break;
-    case 1: connectioncomputer();
+    case 1: ComputerConnection();
         break;
     default:
         cout << "Invalid input." << endl;
@@ -302,7 +303,7 @@ void ConsoleUI::AddPerson()
     yn = cin.readLine();
     if (yn == "Y" || yn == "y")
     {
-        gogn.add_person(name, gender, yearborn, yeardead);
+        //gogn.add_person(name, gender, yearborn, yeardead);
         cout << "\nPerson added!" << endl;
     }
     else
