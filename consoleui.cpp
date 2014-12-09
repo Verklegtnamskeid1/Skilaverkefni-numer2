@@ -141,7 +141,7 @@ void ConsoleUI::AddConnection() {
 
 
 
-    switch(inputid){
+    switch(conect){
     case 1: connectionperson();
         break;
     case 2: connectioncomputer();
@@ -176,10 +176,12 @@ void ConsoleUI::AddPerson()
     cout << endl << "Enter year born:" << endl;
     int yearborn = cin.readLine().toInt();
 
+    QString yn;
     if (gender == 0) cout << "Is he dead? (y/n Y/N)" << endl;
     else cout << "Is she dead? (y/n Y/N)" << endl;
-    QString yn = cin.readLine();
+    yn = cin.readLine();
     int yeardead;
+
 
     if (yn == "Y" || yn == "y")
     {
@@ -206,7 +208,16 @@ void ConsoleUI::AddPerson()
 
     yeardead = -1 ? yeardead : 0;
 
-    QString yeardeadstring = 0 ? QString::number(yeardead) : "Still alive";
+
+    QString yeardeadstring;
+
+    if (yn == "Y" || yn == "y"){
+        yeardeadstring = QString::number(yeardead);
+    }
+    else
+    {
+        yeardeadstring = "Still alive";
+    }
 
     cout
          << "Name: " << name << endl
@@ -233,35 +244,6 @@ void ConsoleUI::Search()
          << "3: in field year born" << endl
          << "4: in field year died" << endl;
 
-
-
-    //Hugmyndir með UI
-        //cout<< "\nSearch << endl
-         //<<"0: by computers
-         //<<"1: by person
-         //<<"2: owner by id
-        // if(input==0)
-        // cout<<"\nSearch"<<endl
-        //<<"0: in field id
-        //<<"1: in field name
-         //<<"2: in field year built
-         //<<"3: built or not
-
-        // if(input==1)
-        // cout<<"\nSearch"<<endl
-        //<<"0: in field id
-        //<<"1: in field name
-        //<<"2: in field gender
-        //<<"3: in field year born
-        //<<"3: in field year died
-
-        // if(input==2)
-        // cout<<"\nSearch"<<endl
-        //<<"0: in field id
-        //<<"1: in field name
-        //<<"2: in field type
-        //<<"3: in field built
-        //<<"4: in field not built
 
 
 
