@@ -253,6 +253,64 @@ void ConsoleUI::Search()
     {
         loadfile();
 
+
+        /*
+         * Bara til að hafa hvernig við hugsum að þetta eigi að líta út
+         *
+         *      cout << "Welcome!" << endl
+             << "Choose one of the following:" << endl
+             << "1. List" << endl
+             << "2. Search" << endl
+             << "3. Insert <<endl
+             << "4. Delete" << endl
+             << "5. Save" << endl
+             << "6. Quit" << endl;
+
+
+             if (input = 1)
+
+       ( cout<<"\nList"<<endl
+        <<"0: the computers
+        <<"1: the persons
+        <<2: both
+        <<3: by owners
+        Og útfrá þessu verður:
+        Input = 0
+        <<"0: by year built
+        <<"1: built or not
+        <<"2: by id
+        <<"3: by name
+        <<"4: by type)
+
+
+       ( Input ==1
+        Eins og áður nema viðbættum möguleiki af
+        <<5: by computers built )
+
+        Input == 2
+        //cout<< "\nSearch << endl
+         //<<"0: by computers
+         //<<"1: by person
+         //<<"2: owner by id
+        Sjá fyrir ofan
+    *
+    * Input == 3
+    * (cout<< "\nInsert << endl
+         <<"0: computer
+         <<"1: person
+         <<"2: owner )
+
+
+         Insert == 4
+
+       ( cout<<"\nDelete"<<endl
+        <<"0: a computer
+        <<"1: a person
+        <<2:  a owner )
+
+                */
+
+
         while(1){
         cout << "Welcome!" << endl
              << "Choose one of the following:" << endl
