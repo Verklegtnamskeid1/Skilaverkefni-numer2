@@ -12,16 +12,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    sk1data.cpp \
     consoleui.cpp \
     cvs.cpp \
-    sqlite.cpp
+    sqlite.cpp \
+    sk2data.cpp
 
 HEADERS += \
     main.h \
-    sk1data.h \
     consoleui.h \
-    sqlite.h
+    sqlite.h \
+    sk2data.h
 
 OTHER_FILES += \
     Skil2.sqlite \

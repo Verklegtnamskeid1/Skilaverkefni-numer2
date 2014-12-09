@@ -1,12 +1,12 @@
 #include "main.h"
 #include "consoleui.h"
-#include "cvs.cpp"
 
 ConsoleUI::ConsoleUI()
 {
 }
 
-searchdef ConsoleUI::DefineSearch()
+
+/* searchdef ConsoleUI::DefineSearch()
 {
 
     cout << "\nHow shall I sort the results:" << endl
@@ -45,7 +45,7 @@ searchdef ConsoleUI::DefineSearch()
 
     return searchdef(sortby, sort);
 }
-
+*/
 void ConsoleUI::Delete()
 {
     cout << "Enter id of entry to delete: " << endl;
@@ -307,25 +307,6 @@ void ConsoleUI::Search()
 
     }
 
-    void ConsoleUI::loadfile()
-    {
-        /* Opna skrá */
-        cout << "Open file: " << FILENAME << endl ;
-        QVector<QStringList> list = openCSVfile();
-
-        if (list.empty()) cout << "File does not exist or is empty!" << endl;
-        else cout << "Imported " << list.count() << " entrie(s) " << endl;
-        cout << endl;
-
-        gogn.insertlist(list);
-    }
-
-    void ConsoleUI::savefile()
-    {
-        cout << "Saving to file: " << FILENAME << endl;
-        saveCSVfile(gogn.query());
-        cout << endl;
-    }
 
     void ConsoleUI::quitmsg()
     {
@@ -337,7 +318,6 @@ void ConsoleUI::Search()
 
     void ConsoleUI::start()
     {
-        loadfile();
 
         while(1){
         cout << "Welcome!" << endl

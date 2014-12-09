@@ -1,6 +1,6 @@
 #ifndef CONSOLEUI_H
 #define CONSOLEUI_H
-#include "sk1data.h"
+#include "sk2data.h"
 
 struct searchdef
 {
@@ -24,12 +24,11 @@ private:
     void List();
     void Search();
     void AddPerson();
-    void Print(QVector<person> result);
+    void Print(QHash<int, QHash<QString, QString> > result);
     void Delete();
 
-    sk1Data gogn;
-    void loadfile();
-    void savefile();
+    sk2data gogn;
+
     void quitmsg();
     searchdef DefineSearch();
     void connectioncomputer();
