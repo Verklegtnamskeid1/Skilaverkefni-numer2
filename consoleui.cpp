@@ -88,12 +88,44 @@ void ConsoleUI::Print(QVector<person> result)
 
 void ConsoleUI::List()
 {
+    cout << "What list would you like to display" << endl
+         << "0: Person" << endl
+         << "1: Computer" << endl
+         << "2: Connection" << endl;
+    int picklist = cin.readLine().toInt();
+
+    switch(picklist){
+    case 0: ListPerson();
+        break;
+    case 1: ListComputer();
+        break;
+    case 2: ListConnection();
+        break;
+    default:
+        cout << "Invalid input." << endl;
+        break;
+    }
+
+
+}
+
+void ConsoleUI::ListPerson()
+{
     searchdef search = DefineSearch();
     QVector<person> results =   gogn.query(GET_ALL, QString(""),
                                 search.sort, search.sortby);
     Print(results);
 }
 
+void ConsoleUI::ListComputer()
+{
+
+}
+
+void ConsoleUI::ListConnection()
+{
+
+}
 
 void ConsoleUI::Add()
 {
@@ -118,33 +150,35 @@ void ConsoleUI::Add()
         cout << "Invalid input." << endl;
         break;
     }
-    cout << endl;)
+    cout << endl;
 }
 void ConsoleUI::AddComputer(){
-    cout <<"\nEnter name:"<<endl;
+    cout << "\nEnter name:" << endl;
+    QString Computers_name = cin.readLine();
 
+    cout << "\nEnter type: \n0: Electronic \n1: Mechanical \n2: Electro-mechanical \n3: Transistor \n4: Other" << endl;
+    int Computers_type = cin.readLine().toInt();
 
-    cout <<"\nEnter type:"<<endl;
+    cout << "\nEnter year it was built:" << endl;
+    int Computers_yearbuilt = cin.readLine().toInt();
 
-    cout <<"\nEnter year built:"<<endl;
-
-    cout <<"\nWas it built?:"<<endl;
+    cout << "\nWas it built? (y/n Y/N):" << endl;
+    int Computers_builtornot = cin.readLine().toInt();
 
 }
 void ConsoleUI::AddConnection() {
 
 
-    cout <<"\nEnter how you want to create a connection"<<endl;
-         << "0: by person ID" << endl
-         << "1: by computer ID" << endl
-            int conect = cin.readLine().toInt();
+    cout <<"\nEnter how you want to create a connection"<<endl
+         << "0: By person ID" << endl
+         << "1: By computer ID" << endl;
 
+    int connect = cin.readLine().toInt();
 
-
-    switch(conect){
-    case 1: connectionperson();
+    switch(connect){
+    case 0: connectionperson();
         break;
-    case 2: connectioncomputer();
+    case 1: connectioncomputer();
         break;
     default:
         cout << "Invalid input." << endl;
@@ -154,10 +188,17 @@ void ConsoleUI::AddConnection() {
 }
 void ConsoleUI::connectionperson()
 {
-
+    cout << "Enter the Person's ID you want to connect to a computer." << endl;
+    int PERSONID = cin.readLine().toInt();
+    cout << "Now enter the computer's ID you want to connect to " /*<< PERSONNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
+    int COMPUTERID = cin.readLine().toInt();
 }
 void ConsoleUI::connectioncomputer()
 {
+    cout << "Enter the Computer's ID you want to connect to a person." << endl;
+    int COMPUTERID = cin.readLine().toInt();
+    cout << "Now enter the person's ID you want to connect to " /*<< COMPUTERNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
+    int PERSONID = cin.readLine().toInt();
 }
 void ConsoleUI::AddPerson()
 {
