@@ -24,8 +24,10 @@ private:
     void List();
     void Search();
     void AddPerson();
-    void Print(QVector<QMap<QString, QString> > buffer);
+    void Print(QVector<QHash<QString, QString> > buffer);
     void Delete();
+
+    bool SearchASC();
 
     sk2data gogn;
 

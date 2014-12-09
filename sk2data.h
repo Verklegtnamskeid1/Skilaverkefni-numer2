@@ -21,7 +21,7 @@ public:
 
     QHash<int, QHash<QString, QString> > QueryComputer(); /* Sækir allt */
     QHash<int, QHash<QString, QString> > QueryConnection();
-    QVector<QMap<QString, QString> > QueryPerson();
+    QVector<QHash<QString, QString> > QueryPerson(QString row, bool asc);
 
     void QueryComputer(int id); /* sækja id*/
     void QueryConnection(int id);

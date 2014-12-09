@@ -5,6 +5,25 @@ ConsoleUI::ConsoleUI()
 {
 }
 
+bool ConsoleUI::SearchASC()
+{
+    cout << "\nSort by accending or descending?" << endl
+         << "1: Asscending" << endl
+         << "2: Descending" << endl;
+
+    QString input = cin.readLine();
+    int inputid = input.toInt();
+    switch(inputid)
+    {
+     case (2):
+        return false;
+    case(1): default:
+            return true;
+
+    }
+}
+
+
 QString ConsoleUI::DefineSearch()
 {
     return DefineSearchPersons();
@@ -12,7 +31,10 @@ QString ConsoleUI::DefineSearch()
     return DefineSearchConnection();
 }
 
+
+
 QString ConsoleUI::DefineSearchPersons(){
+    return "Persons_ID";
 }
 QString ConsoleUI::DefineSearchComputer(){
 }
@@ -100,17 +122,29 @@ void ConsoleUI::DeleteConnection(int deleteID)
 
 
 
-void ConsoleUI::Print(QVector<QMap<QString, QString> > buffer)
+void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
 {
+
+    QString printorder = buffer[0]["PrintOrder"];
+    QStringList col = printorder.split(":");
+   /* foreach (QString colitem, col)
+    {
+        cout << colitem << "\t";
+    }
+    cout << "\n"; */
+
+
 
     foreach (auto item, buffer)
     {
-        foreach (QString string, buffer.key())
-        {}
+        foreach (QString colitem, col)
+        {
+            cout << colitem << ":" << item[colitem] << "\t";
+        }
+        cout << "\n";
 
     }
 
-    cout << "ID\tName\t\t\t\tGender\tBorn\tDied" << endl;
     cout << "_______________________________________________________________________" << endl;
 
     cout << "_______________________________________________________________________" << endl;
@@ -142,10 +176,10 @@ void ConsoleUI::List()
 
 void ConsoleUI::ListPerson()
 {
-    QVector<QMap<QString, QString> > buffer = gogn.QueryPerson();
-    // searchdef search = DefineSearch();
-    /*QVector<person> results =   gogn.query(GET_ALL, QString(""),
-                                search.sort, search.sortby); */
+    QString row = DefineSearchPersons(); /* Functionið returnar þeim row sem á að sorta eftir */
+    bool asc = SearchASC();
+    QVector<QHash<QString, QString> > buffer = gogn.QueryPerson(row, asc);
+
     Print(buffer);
 }
 
@@ -186,7 +220,13 @@ void ConsoleUI::Add()
 }
 void ConsoleUI::AddComputer(){
     cout << "\nEnter name:" << endl;
-    QString Computers_name = cin.readLine();
+    QString Computers_name = cin.readLine(); cout << "\nHow shall I sort the results:" << endl
+                                                  << "0: By ID" << endl
+                                                  << "1: By name" << endl
+                                                  << "2: By gender" << endl
+                                                  << "3: By year born" << endl
+                                                  << "4: By year died" << endl
+                                                  << "";
 
     cout << "\nEnter type: \n0: Electronic \n1: Mechanical \n2: Electro-mechanical \n3: Transistor \n4: Other" << endl;
     int Computers_type = cin.readLine().toInt();

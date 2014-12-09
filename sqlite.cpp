@@ -91,6 +91,8 @@ QHash<int, QHash<QString, QString> > sqlite::query(QString TABLE,
         qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();
         return buffer;
     }
+
+
     int c = 0;
     while(searchQuery.next())
     {
@@ -196,6 +198,7 @@ void sqlite::insert(QString TABLE, QHash<QString, QString> insert)
 void sqlite::test()
 {
     query("persons", EmptySearch, DefaultSort);
+
     QHash<QString, QString> ble;
     ble.insert("Persons_Name","Heheh");
     ble.insert("Persons_Sex","0");
