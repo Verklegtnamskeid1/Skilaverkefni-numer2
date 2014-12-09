@@ -13,8 +13,25 @@ void sk2data::AddPerson(QString name, int gender, int yearborn, int yeardead)
     buffer.insert("Persons_YearBorn", QString::number(yearborn));
     buffer.insert("Persons_YearDeath", QString::number(yeardead));
     connection.insert("persons", buffer);
-
 }
+
+void AddComputer(QString name, int type, int yearbuilt, int builtornot)
+{
+    QHash<QString, QString> buffer;
+    buffer.insert("Computers_Name", name);
+    buffer.insert("Computers_Type", QString::number(type));
+    buffer.insert("Computers_YearBuilt", QString::number(yearbuilt));
+    buffer.insert("Computers_BuiltOrNot", QString::number(builtornot));
+    connection.insert("computers", buffer);
+}
+void AddConnection(int personid, int computerid);
+{
+    QHash<QString, QString> buffer;
+    buffer.insert("Persons_ID", QString::number(personid));
+    buffer.insert("Computers_ID", QString::number(computerid));
+    connection.insert("owners", buffer);
+}
+
 
 QVector<QMap<QString, QString> > sk2data::QueryPerson()
 {
