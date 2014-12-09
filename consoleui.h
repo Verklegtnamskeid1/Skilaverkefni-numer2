@@ -32,6 +32,14 @@ private:
     void savefile();
     void quitmsg();
     searchdef DefineSearch();
+    void connectioncomputer();
+    void connectionperson();
+    void AddConnection();
+    void AddComputer();
+    void Add();
+    void ListPerson();
+    void ListComputer();
+    void ListConnection();
 };
 
 extern QTextStream cout;
