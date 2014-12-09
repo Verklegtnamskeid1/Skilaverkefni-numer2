@@ -107,6 +107,35 @@ QHash<int, QHash<QString, QString> > sqlite::query(QString TABLE,
     return buffer;
 }
 
+/* DELETE */
+void sqlite::delete(QString TABLE, QString row, int id)
+{
+    if (!tables.contains(TABLE))
+    {
+        qDebug() << "Table " << TABLE << " is not valid!";
+        return;
+    }
+
+    if (!TablesDef[TABLE].contains(row))
+    {
+        qDebug() << "Invalid column " << row << " in table " << TABLE;
+        return;
+    }
+
+    QString SQL = "DELETE FROM "+TABLE+ "WHERE "+row+"="+id;
+
+    QSqlQuery searchQuery;
+    searchQuery = QSqlQuery(db);
+    searchQuery.clear();
+    searchQuery.prepare(SQL);
+    if (!searchQuery.exec())
+    {
+        qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();
+        return;
+    }
+}
+
+
 /* INSERT */
 void sqlite::insert(QString TABLE, QHash<QString, QString> insert)
 {
