@@ -24,7 +24,7 @@ private:
     void List();
     void Search();
     void AddPerson();
-    void Print(QHash<int, QHash<QString, QString> > result);
+    void Print();
     void Delete();
 
     sk2data gogn;
