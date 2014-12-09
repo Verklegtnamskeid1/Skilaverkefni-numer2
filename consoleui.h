@@ -31,14 +31,17 @@ private:
 
     void quitmsg();
     searchdef DefineSearch();
-    void connectioncomputer();
-    void connectionperson();
+    void ComputerConnection();
+    void PersonConnection();
     void AddConnection();
     void AddComputer();
     void Add();
     void ListPerson();
     void ListComputer();
     void ListConnection();
+    void DeletePerson(int deleteID);
+    void DeleteComputer(int deleteID);
+    void DeleteConnection(int deleteID);
 };
 
 extern QTextStream cout;

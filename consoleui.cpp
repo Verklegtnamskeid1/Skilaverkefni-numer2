@@ -48,10 +48,43 @@ ConsoleUI::ConsoleUI()
 */
 void ConsoleUI::Delete()
 {
-    cout << "Enter id of entry to delete: " << endl;
-    int idDelete = cin.readLine().toInt();
-    gogn.remove_person(idDelete);
+    cout << "What do you want to delete?" << endl
+         << "0: Person" << endl
+         << "1: Computer" << endl
+         << "2: Connection" << endl;
+    int pickdelete = cin.readLine().toInt();
+
+    cout << "What ID do you want to delete?" << endl;
+    int deleteID = cin.readLine().toInt();
+
+    switch(pickdelete){
+    case 0: DeletePersons(deleteID);
+        break;
+    case 1: DeleteComputer(deleteID);
+        break;
+    case 2: DeleteConnection(deleteID);
+        break;
+    default:
+        cout << "Invalid input." << endl;
+        break;
+
+    }
+
 }
+
+void ConsoleUI::DeletePerson(int deleteID)
+{
+
+}
+void ConsoleUI::DeleteComputer(int deleteID)
+{
+
+}
+void ConsoleUI::DeleteConnection(int deleteID)
+{
+
+}
+
 
 
 void ConsoleUI::Print(QVector<person> result)
@@ -186,14 +219,14 @@ void ConsoleUI::AddConnection() {
     }
     cout << endl;
 }
-void ConsoleUI::connectionperson()
+void ConsoleUI::PersonConnection()
 {
     cout << "Enter the Person's ID you want to connect to a computer." << endl;
     int PERSONID = cin.readLine().toInt();
     cout << "Now enter the computer's ID you want to connect to " /*<< PERSONNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
     int COMPUTERID = cin.readLine().toInt();
 }
-void ConsoleUI::connectioncomputer()
+void ConsoleUI::ComputerConnection()
 {
     cout << "Enter the Computer's ID you want to connect to a person." << endl;
     int COMPUTERID = cin.readLine().toInt();
