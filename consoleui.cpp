@@ -170,94 +170,128 @@ void ConsoleUI::Search()
          << "3: in field year born" << endl
          << "4: in field year died" << endl;
 
-   QString input = cin.readLine();
-   int inputid = input.toInt();
-   if (inputid > 4 || inputid < 0 ) inputid = 1;
-   inputid = GET_BY[inputid];
-
-   cout << "\nEnter search text:" << endl;
-
-   QString searchstring = cin.readLine();
-
-   searchdef search = DefineSearch();
-   QVector<person> results =   gogn.query(inputid, searchstring,
-                               search.sort, search.sortby);
-   Print(results);
 
 
-}
+    //Hugmyndir með UI
+        //cout<< "\nSearch << endl
+         //<<"0: by computers
+         //<<"1: by person
+         //<<"2: owner by id
+        // if(input==0)
+        // cout<<"\nSearch"<<endl
+        //<<"0: in field id
+        //<<"1: in field name
+         //<<"2: in field year built
+         //<<"3: built or not
 
-void ConsoleUI::loadfile()
-{
-    /* Opna skrá */
-    cout << "Open file: " << FILENAME << endl ;
-    QVector<QStringList> list = openCSVfile();
+        // if(input==1)
+        // cout<<"\nSearch"<<endl
+        //<<"0: in field id
+        //<<"1: in field name
+        //<<"2: in field gender
+        //<<"3: in field year born
+        //<<"3: in field year died
 
-    if (list.empty()) cout << "File does not exist or is empty!" << endl;
-    else cout << "Imported " << list.count() << " entrie(s) " << endl;
-    cout << endl;
-
-    gogn.insertlist(list);
-}
-
-void ConsoleUI::savefile()
-{
-    cout << "Saving to file: " << FILENAME << endl;
-    saveCSVfile(gogn.query());
-    cout << endl;
-}
-
-void ConsoleUI::quitmsg()
-{
-    cout << endl;
-    cout << "Goodbye! " << endl;
-    cout << endl;
-}
-
-
-void ConsoleUI::start()
-{
-    loadfile();
-
-    while(1){
-    cout << "Welcome!" << endl
-         << "Choose one of the following:" << endl
-         << "1. List" << endl
-         << "2. Search" << endl
-         << "3. Insert person" << endl
-         << "4. Delete person" << endl
-         << "5. Save" << endl
-         << "6. Quit" << endl;
-    int inputid = cin.readLine().toInt();
+        // if(input==2)
+        // cout<<"\nSearch"<<endl
+        //<<"0: in field id
+        //<<"1: in field name
+        //<<"2: in field type
+        //<<"3: in field built
+        //<<"4: in field not built
 
 
 
-    switch(inputid){
-    case 1: List();
-        break;
-    case 2: Search();
-        break;
-    case 3: AddPerson();
-        break;
-    case 4: Delete();
-        break;
-    case 5:
-        savefile();
-        break;
-    case 6:
-        quitmsg();
-        return;
-        break;
-    default:
-        cout << "Invalid input." << endl;
-        break;
+
+
+       QString input = cin.readLine();
+       int inputid = input.toInt();
+       if (inputid > 4 || inputid < 0 ) inputid = 1;
+       inputid = GET_BY[inputid];
+
+       cout << "\nEnter search text:" << endl;
+
+       QString searchstring = cin.readLine();
+
+       searchdef search = DefineSearch();
+       QVector<person> results =   gogn.query(inputid, searchstring,
+                                   search.sort, search.sortby);
+       Print(results);
+
+
     }
-    cout << endl;
-}
-}
 
-QTextStream cout(stdout);
-QTextStream cin(stdin);
+    void ConsoleUI::loadfile()
+    {
+        /* Opna skrá */
+        cout << "Open file: " << FILENAME << endl ;
+        QVector<QStringList> list = openCSVfile();
+
+        if (list.empty()) cout << "File does not exist or is empty!" << endl;
+        else cout << "Imported " << list.count() << " entrie(s) " << endl;
+        cout << endl;
+
+        gogn.insertlist(list);
+    }
+
+    void ConsoleUI::savefile()
+    {
+        cout << "Saving to file: " << FILENAME << endl;
+        saveCSVfile(gogn.query());
+        cout << endl;
+    }
+
+    void ConsoleUI::quitmsg()
+    {
+        cout << endl;
+        cout << "Goodbye! " << endl;
+        cout << endl;
+    }
+
+
+    void ConsoleUI::start()
+    {
+        loadfile();
+
+        while(1){
+        cout << "Welcome!" << endl
+             << "Choose one of the following:" << endl
+             << "1. List" << endl
+             << "2. Search" << endl
+             << "3. Insert person" << endl
+             << "4. Delete person" << endl
+             << "5. Save" << endl
+             << "6. Quit" << endl;
+        int inputid = cin.readLine().toInt();
+
+
+
+        switch(inputid){
+        case 1: List();
+            break;
+        case 2: Search();
+            break;
+        case 3: AddPerson();
+            break;
+        case 4: Delete();
+            break;
+        case 5:
+            savefile();
+            break;
+        case 6:
+            quitmsg();
+            return;
+            break;
+        default:
+            cout << "Invalid input." << endl;
+            break;
+        }
+        cout << endl;
+    }
+    }
+
+    QTextStream cout(stdout);
+    QTextStream cin(stdin);
 
 
 
