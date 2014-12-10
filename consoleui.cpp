@@ -456,6 +456,35 @@ void ConsoleUI::SearchComputer()
          << "4: in field was it built or not?" << endl;
 
     int SearchInput = cin.readLine().toInt();
+    QString row;
+
+    switch(SearchInput)
+    {
+        case 0:
+         row ="Computers_ID";
+         break;
+        case 1:
+          row="Computers_Name";
+          break;
+        case 2:
+          row="Computers_Type";
+          break;
+        case 3:
+          row="Computers_YearBuilt";
+          break;
+        case 4:
+          row="Computers_BuiltOrNot";
+          break;
+        default:
+        cout << "Incorrect option";
+        return;
+
+    }
+
+    cout << "Find: " << endl;
+    QString searchstring = cin.readLine();
+    ListComputer(row, searchstring);
+
 }
 void ConsoleUI::SearchConnection()
 {
@@ -464,6 +493,25 @@ void ConsoleUI::SearchConnection()
          << "1: in field computer ID" << endl;
 
     int SearchInput = cin.readLine().toInt();
+
+    cout << "Find: " << endl;
+    QString searchstring = cin.readLine();
+    QString row;
+    switch(SearchInput)
+    {
+        case 0:
+           row  = "Persons_ID";
+           break;
+        case 1:
+           row = "Computers_ID";
+           break;
+        default:
+          cout << "Incorrect option";
+          return;
+    }
+
+
+    ListConnection(row, searchstring);
 }
 
 
