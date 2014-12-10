@@ -71,12 +71,12 @@ QVector<QHash<QString, QString> > sk2data::QueryComputer(QString row,
         QHash<QString, QString> result;
 
         //Electronic \n1: Mechanical \n2: Electro-mechanical \n3: Transistor \n4: Other
-        int typemachine = item["Computers_type"].toInt();
+        QString typemachine = item["Computers_Type"];
         QString typemachinestring;
-        if (typemachine == 0) typemachinestring = "Electronic";
-        else if(typemachine ==1) typemachinestring = "Mechanical";
-        else if(typemachine ==2) typemachinestring = "Electro-mechanical";
-        else if(typemachine ==3) typemachinestring = "Transistor";
+        if (typemachine == "0") typemachinestring = "Electronic";
+        else if(typemachine =="1") typemachinestring = "Mechanical";
+        else if(typemachine =="2") typemachinestring = "Electro-mechanical";
+        else if(typemachine =="3") typemachinestring = "Transistor";
         else typemachinestring = "Other";
         QString built = "No";
         if (item["Computers_BuiltOrNot"] == "1") built = "Yes";
