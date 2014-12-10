@@ -104,7 +104,6 @@ QMap<int, QHash<QString, QString> > sqlite::query(QString TABLE,
         qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();
         return buffer;
     }
-    qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();
 
 
     int c = 0;
