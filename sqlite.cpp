@@ -99,7 +99,6 @@ QMap<int, QHash<QString, QString> > sqlite::query(QString TABLE,
     QString SQL = "SELECT "+getstring+" FROM "+TABLE+searchWHERE+sortSTRING;
     searchQuery.clear();
     searchQuery.prepare(SQL);
-    qDebug() << SQL;
     if (!searchQuery.exec())
     {
         qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();

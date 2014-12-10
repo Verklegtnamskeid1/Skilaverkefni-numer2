@@ -404,21 +404,6 @@ void ConsoleUI::Search()
         break;
     }
 
-    /*
-       QString input = cin.readLine();
-       int inputid = input.toInt();
-       if (inputid > 4 || inputid < 0 ) inputid = 1;
-       inputid = GET_BY[inputid];
-
-       cout << "\nEnter search text:" << endl;
-
-       QString searchstring = cin.readLine();
-
-       searchdef search = DefineSearch();
-       QVector<person> results =   gogn.query(inputid, searchstring,
-                                   search.sort, search.sortby);
-       Print(results);
-    */
 
     }
 
