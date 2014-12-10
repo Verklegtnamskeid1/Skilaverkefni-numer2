@@ -140,8 +140,10 @@ void ConsoleUI::DeleteConnection(int deleteID)
 
 
 
+
 void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
 {
+ cout << "_______________________________________________________________________" << endl << endl;
 
     QString printorder = buffer[0]["PrintOrder"];
     QStringList col = printorder.split(":");
@@ -154,19 +156,19 @@ void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
         foreach (QString colitem, col)
         {
             colcount++;
-            cout << colitem << ":" << item[colitem] << "\t";
+            cout << colitem << ": " << item[colitem] << "\t";
             if (colcount % 3 == 0) cout << "\n";
         }
+        cout << "\n";
+        cout << "---";
         cout << "\n";
     }
 
 
-    cout << "_______________________________________________________________________" << endl;
 
     cout << "_______________________________________________________________________" << endl;
 
 }
-
 void ConsoleUI::List()
 {
     cout << "What list would you like to display" << endl
