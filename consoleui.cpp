@@ -23,8 +23,6 @@ bool ConsoleUI::SearchASC()
     }
 }
 
-
-
 QString ConsoleUI::DefineSearchPersons()
 {
     cout << "\nHow shall I sort the results:" << endl
@@ -51,8 +49,8 @@ QString ConsoleUI::DefineSearchPersons()
         cout << "Invalid input." << endl;
         break;
     }
-
 }
+
 QString ConsoleUI::DefineSearchComputer()
 {
     cout << "\nHow shall I sort the results:" << endl
@@ -80,6 +78,7 @@ QString ConsoleUI::DefineSearchComputer()
         break;
     }
 }
+
 QString ConsoleUI::DefineSearchConnection()
 {
     cout << "\nHow shall I sort the results:" << endl
@@ -122,7 +121,6 @@ void ConsoleUI::Delete()
         break;
 
     }
-
 }
 
 void ConsoleUI::DeletePerson(int deleteID)
@@ -137,9 +135,6 @@ void ConsoleUI::DeleteConnection(int deleteID)
 {
 
 }
-
-
-
 
 void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
 {
@@ -166,11 +161,10 @@ void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
         cout << "\n";
     }
 
-
-
     cout << "_______________________________________________________________________" << endl;
 
 }
+
 void ConsoleUI::List()
 {
     cout << "What list would you like to display" << endl
@@ -190,8 +184,6 @@ void ConsoleUI::List()
         cout << "Invalid input." << endl;
         break;
     }
-
-
 }
 
 void ConsoleUI::ListPerson(QString searchrow, QString searchfor)
@@ -211,8 +203,6 @@ void ConsoleUI::ListComputer(QString searchrow, QString searchfor)
     QVector<QHash<QString, QString> > buffer = gogn.QueryComputer(row, asc, searchrow, searchfor);
 
     Print(buffer);
-
-
 }
 
 void ConsoleUI::ListConnection(QString searchrow, QString searchfor)
@@ -223,8 +213,6 @@ void ConsoleUI::ListConnection(QString searchrow, QString searchfor)
     QVector<QHash<QString, QString> > buffer = gogn.QueryConnection(row, asc, searchrow, searchfor);
 
     Print(buffer);
-
-
 }
 
 void ConsoleUI::Add()
@@ -235,8 +223,6 @@ void ConsoleUI::Add()
          << "1: Computer" << endl
          << "2: Connection"<<endl;
     int input = cin.readLine().toInt();
-
-
 
     switch(input){
     case 0: AddPerson();
@@ -252,6 +238,7 @@ void ConsoleUI::Add()
     }
     cout << endl;
 }
+
 void ConsoleUI::AddComputer(){
     cout << "\nEnter name:" << endl;
     QString Computers_name = cin.readLine(); cout << "\nHow shall I sort the results:" << endl
@@ -272,11 +259,10 @@ void ConsoleUI::AddComputer(){
     int Computers_builtornot = cin.readLine().toInt();
 
     gogn.AddPerson(Computers_name, Computers_type, Computers_yearbuilt, Computers_builtornot);
-
 }
-void ConsoleUI::AddConnection() {
 
-
+void ConsoleUI::AddConnection()
+{
     cout <<"\nEnter how you want to create a connection"<<endl
          << "0: By person ID" << endl
          << "1: By computer ID" << endl;
@@ -294,23 +280,25 @@ void ConsoleUI::AddConnection() {
     }
     cout << endl;
 }
+
 void ConsoleUI::PersonConnection()
 {
     cout << "Enter the Person's ID you want to connect to a computer." << endl;
     int PERSONID = cin.readLine().toInt();
-    cout << "Now enter the computer's ID you want to connect to " /*<< PERSONNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
+    cout << "Now enter the computer's ID you want to connect to " << endl;
     int COMPUTERID = cin.readLine().toInt();
     gogn.AddConnection(PERSONID, COMPUTERID);
 }
+
 void ConsoleUI::ComputerConnection()
 {
     cout << "Enter the Computer's ID you want to connect to a person." << endl;
     int COMPUTERID = cin.readLine().toInt();
-    cout << "Now enter the person's ID you want to connect to " /*<< COMPUTERNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
+    cout << "Now enter the person's ID you want to connect to " << endl;
     int PERSONID = cin.readLine().toInt();
     gogn.AddConnection(PERSONID, COMPUTERID);
-
 }
+
 void ConsoleUI::AddPerson()
 {
     cout << "\nEnter name:" << endl;
@@ -334,7 +322,6 @@ void ConsoleUI::AddPerson()
     yn = cin.readLine();
     int yeardead;
 
-
     if (yn == "Y" || yn == "y")
     {
         cout << "\nEnter year dead:"<< endl;
@@ -353,7 +340,7 @@ void ConsoleUI::AddPerson()
         return;
     }
 
-    if (yearborn < 1500 || (yeardead <1500 && yeardead != -1) )
+    if (yearborn < 1500 || (yeardead < 1500 && yeardead != -1) )
     {
         cout << "Please check if your years are correct! " << endl << endl;
     }
@@ -407,9 +394,7 @@ void ConsoleUI::Search()
         cout << "Invalid input." << endl;
         break;
     }
-
-
-    }
+}
 
 void ConsoleUI::SearchPerson()
 {
@@ -448,8 +433,8 @@ void ConsoleUI::SearchPerson()
     QString searchstring = cin.readLine();
 
     ListPerson(row, searchstring);
-
 }
+
 void ConsoleUI::SearchComputer()
 {
     cout << "\nSearch" << endl
@@ -482,14 +467,13 @@ void ConsoleUI::SearchComputer()
         default:
         cout << "Incorrect option";
         return;
-
     }
 
     cout << "Find: " << endl;
     QString searchstring = cin.readLine();
     ListComputer(row, searchstring);
-
 }
+
 void ConsoleUI::SearchConnection()
 {
     cout << "\nSearch" << endl
@@ -513,35 +497,31 @@ void ConsoleUI::SearchConnection()
           cout << "Incorrect option";
           return;
     }
-
-
     ListConnection(row, searchstring);
 }
 
+void ConsoleUI::quitmsg()
+{
+    cout << endl;
+    cout << "Goodbye! " << endl;
+    cout << endl;
+}
 
-    void ConsoleUI::quitmsg()
+
+void ConsoleUI::start()
+{
+    while(1)
     {
-        cout << endl;
-        cout << "Goodbye! " << endl;
-        cout << endl;
-    }
+    cout << "Welcome!" << endl
+         << "Choose one of the following:" << endl
+         << "1. List" << endl
+         << "2. Search" << endl
+         << "3. Insert " << endl
+         << "4. Quit" << endl;
+    int inputid = cin.readLine().toInt();
 
-
-    void ConsoleUI::start()
-    {
-
-        while(1){
-        cout << "Welcome!" << endl
-             << "Choose one of the following:" << endl
-             << "1. List" << endl
-             << "2. Search" << endl
-             << "3. Insert " << endl
-             << "4. Quit" << endl;
-        int inputid = cin.readLine().toInt();
-
-
-
-        switch(inputid){
+        switch(inputid)
+        {
         case 1: List();
             break;
         case 2: Search();
@@ -557,12 +537,11 @@ void ConsoleUI::SearchConnection()
             cout << "Invalid input." << endl;
             break;
         }
-        cout << endl;
+
+    cout << endl;
+
     }
-    }
+}
 
     QTextStream cout(stdout);
     QTextStream cin(stdin);
-
-
-
