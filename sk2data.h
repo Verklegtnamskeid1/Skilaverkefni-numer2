@@ -19,9 +19,18 @@ public:
 
     /* Query */
 
-    QHash<int, QHash<QString, QString> > QueryComputer(); /* Sækir allt */
-    QHash<int, QHash<QString, QString> > QueryConnection();
-    QVector<QHash<QString, QString> > QueryPerson(QString row, bool asc);
+    QVector<QHash<QString, QString> > QueryComputer(QString row="Computers_ID",
+                                                  bool asc = true,
+                                                  QString searchrow="",
+                                                  QString searchstring="");
+    QVector<QHash<QString, QString> > QueryConnection(QString row="Persons_ID",
+                                                  bool asc = true,
+                                                  QString searchrow="",
+                                                  QString searchstring="");
+    QVector<QHash<QString, QString> > QueryPerson(QString row="Persons_ID",
+                                                  bool asc = true,
+                                                  QString searchrow="",
+                                                  QString searchstring="");
 
     void QueryComputer(int id); /* sækja id*/
     void QueryConnection(int id);

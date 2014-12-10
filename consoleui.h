@@ -38,9 +38,9 @@ private:
     void AddConnection();
     void AddComputer();
     void Add();
-    void ListPerson();
-    void ListComputer();
-    void ListConnection();
+    void ListPerson(QString searchrow = "", QString searchfor = "");
+    void ListComputer(QString searchrow = "", QString searchfor = "");
+    void ListConnection(QString searchrow = "", QString searchfor = "");
     void DeletePerson(int deleteID);
     void DeleteComputer(int deleteID);
     void DeleteConnection(int deleteID);

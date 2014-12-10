@@ -24,12 +24,6 @@ bool ConsoleUI::SearchASC()
 }
 
 
-QString ConsoleUI::DefineSearch()
-{
-    return DefineSearchPersons();
-    return DefineSearchComputer();
-    return DefineSearchConnection();
-}
 
 QString ConsoleUI::DefineSearchPersons()
 {
@@ -104,46 +98,7 @@ QString ConsoleUI::DefineSearchConnection()
         break;
     }
 }
-/* searchdef ConsoleUI::DefineSearch()
-{
 
-    cout << "\nHow shall I sort the results:" << endl
-         << "0: By ID" << endl
-         << "1: By name" << endl
-         << "2: By gender" << endl
-         << "3: By year born" << endl
-         << "4: By year died" << endl
-         << "";
-   int sortby, sort;
-   QString input = cin.readLine();
-   int inputid = input.toInt();
-   switch (inputid)
-   {
-       case(1): case(2): case(3): case(4):
-        sortby = SORTY_BY[inputid];
-       break;
-       case(0): default:
-        sortby = SORT_BY_ID; break;
-   }
-
-
-   cout << "\nSort by accending or descending?" << endl
-        << "1: Asscending" << endl
-        << "2: Descending" << endl;
-
-   input = cin.readLine();
-   inputid = input.toInt();
-   switch(inputid)
-   {
-    case (2):
-        sort = SORT_DESCENDING; break;
-    case(1): default:
-        sort = SORT_ASCENDING;
-    }
-
-    return searchdef(sortby, sort);
-}
-*/
 void ConsoleUI::Delete()
 {
     cout << "What do you want to delete?" << endl
@@ -190,23 +145,21 @@ void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
 
     QString printorder = buffer[0]["PrintOrder"];
     QStringList col = printorder.split(":");
-   /* foreach (QString colitem, col)
+    int size = buffer[0]["RecordSize"].toInt();
+
+    for (int a = 1; a < size; a++)
     {
-        cout << colitem << "\t";
-    }
-    cout << "\n"; */
-
-
-
-    foreach (auto item, buffer)
-    {
+        auto item = buffer[a];
+        int colcount = 0;
         foreach (QString colitem, col)
         {
+            colcount++;
             cout << colitem << ":" << item[colitem] << "\t";
+            if (colcount % 3 == 0) cout << "\n";
         }
         cout << "\n";
-
     }
+
 
     cout << "_______________________________________________________________________" << endl;
 
@@ -237,22 +190,36 @@ void ConsoleUI::List()
 
 }
 
-void ConsoleUI::ListPerson()
+void ConsoleUI::ListPerson(QString searchrow, QString searchfor)
 {
-    QString row = DefineSearchPersons(); /* Functionið returnar þeim row sem á að sorta eftir */
+    QString row = DefineSearchPersons();
     bool asc = SearchASC();
-    QVector<QHash<QString, QString> > buffer = gogn.QueryPerson(row, asc);
+    QVector<QHash<QString, QString> > buffer = gogn.QueryPerson(row, asc, searchrow, searchfor);
 
     Print(buffer);
 }
 
-void ConsoleUI::ListComputer()
+void ConsoleUI::ListComputer(QString searchrow, QString searchfor)
 {
+    QString row = DefineSearchComputer();
+    bool asc = SearchASC();
+
+    QVector<QHash<QString, QString> > buffer = gogn.QueryComputer(row, asc, searchrow, searchfor);
+
+    Print(buffer);
+
 
 }
 
-void ConsoleUI::ListConnection()
+void ConsoleUI::ListConnection(QString searchrow, QString searchfor)
 {
+    QString row = DefineSearchConnection();
+    bool asc = SearchASC();
+
+    QVector<QHash<QString, QString> > buffer = gogn.QueryConnection(row, asc, searchrow, searchfor);
+
+    Print(buffer);
+
 
 }
 
@@ -300,6 +267,8 @@ void ConsoleUI::AddComputer(){
     cout << "\nWas it built? (y/n Y/N):" << endl;
     int Computers_builtornot = cin.readLine().toInt();
 
+    gogn.AddPerson(Computers_name, Computers_type, Computers_yearbuilt, Computers_builtornot);
+
 }
 void ConsoleUI::AddConnection() {
 
@@ -327,6 +296,7 @@ void ConsoleUI::PersonConnection()
     int PERSONID = cin.readLine().toInt();
     cout << "Now enter the computer's ID you want to connect to " /*<< PERSONNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
     int COMPUTERID = cin.readLine().toInt();
+    gogn.AddConnection(PERSONID, COMPUTERID);
 }
 void ConsoleUI::ComputerConnection()
 {
@@ -334,6 +304,8 @@ void ConsoleUI::ComputerConnection()
     int COMPUTERID = cin.readLine().toInt();
     cout << "Now enter the person's ID you want to connect to " /*<< COMPUTERNAME*/ /*ÞARF AÐ REDDSSU*/ << endl;
     int PERSONID = cin.readLine().toInt();
+    gogn.AddConnection(PERSONID, COMPUTERID);
+
 }
 void ConsoleUI::AddPerson()
 {
@@ -460,6 +432,34 @@ void ConsoleUI::SearchPerson()
          << "4: in field year died" << endl;
 
     int SearchInput = cin.readLine().toInt();
+
+    QString row;
+    switch (SearchInput){
+
+    case 0:
+        row = "Persons_ID";
+        break;
+    case 1:
+        row = "Persons_Name";
+        break;
+    case 2:
+        row = "Persons_Sex";
+        break;
+    case 3:
+        row = "Persons_YearBorn";
+        break;
+    case 4:
+        row = "Persons_YearDeath";
+        break;
+    default:
+        cout << "Incorrect option";
+        return;
+    }
+    cout << "Find: " << endl;
+    QString searchstring = cin.readLine();
+
+    ListPerson(row, searchstring);
+
 }
 void ConsoleUI::SearchComputer()
 {
@@ -499,8 +499,7 @@ void ConsoleUI::SearchConnection()
              << "1. List" << endl
              << "2. Search" << endl
              << "3. Insert " << endl
-             << "4. Delete " << endl
-             << "5. Quit" << endl;
+             << "4. Quit" << endl;
         int inputid = cin.readLine().toInt();
 
 
@@ -512,9 +511,8 @@ void ConsoleUI::SearchConnection()
             break;
         case 3: Add();
             break;
-        case 4: Delete();
-            break;
-        case 5:
+
+        case 4:
             quitmsg();
             return;
             break;

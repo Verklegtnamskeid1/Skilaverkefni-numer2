@@ -31,7 +31,11 @@ void sk2data::AddConnection(int personid, int computerid)
     connection.insert("owners", buffer);
 }
 
-QVector<QHash<QString, QString> > sk2data::QueryPerson(QString row="Persons_ID", bool asc = true)
+QVector<QHash<QString, QString> > sk2data::QueryComputer(QString row,
+                                                       bool asc,
+                                                       QString searchrow,
+                                                       QString searchstring)
+
 {
     QVector<QHash<QString, QString> > map;
 
@@ -43,50 +47,169 @@ QVector<QHash<QString, QString> > sk2data::QueryPerson(QString row="Persons_ID",
     else { sort["sordorder"] = connection.DESC;}
 
     sort["sortorder"] = row;
+    QHash<QString,QString> searchhash;
+    if (searchrow != "")
+    {
+        searchhash[searchrow] = searchstring;
+    }
 
-    QHash<int, QHash<QString, QString> > buffer =
-             connection.query("persons", connection.EmptySearch,
+
+    QMap<int, QHash<QString, QString> > buffer =
+             connection.query("computers", searchhash,
                             sort);
 
-    QHashIterator<int, QHash<QString, QString>> i(buffer);
+    QHash<QString, QString> printorder;
+    printorder.insert("PrintOrder", "ID:Name:Year built:Type:Built?");
+    printorder.insert("RecordSize", buffer[0]["RecordSize"]);
+
+    map << printorder;
+
+    foreach (auto item, buffer)
+    {
+
+        QString gender, yeardeath;
+        QHash<QString, QString> result;
+
+        //Electronic \n1: Mechanical \n2: Electro-mechanical \n3: Transistor \n4: Other
+        int typemachine = item["Computers_type"].toInt();
+        QString typemachinestring;
+        if (typemachine == 0) typemachinestring = "Electronic";
+        else if(typemachine ==1) typemachinestring = "Mechanical";
+        else if(typemachine ==2) typemachinestring = "Electro-mechanical";
+        else if(typemachine ==3) typemachinestring = "Transistor";
+        else typemachinestring = "Other";
+        QString built = "No";
+        if (item["Computers_BuiltOrNot"] == "1") built = "Yes";
+
+
+
+             result.insert("ID", item["Computers_ID"]);
+             result.insert("Name", item["Computers_Name"]);
+             result.insert("Year built", item["Computers_YearBuilt"]);
+             result.insert("Type", typemachinestring);
+             result.insert("Built?", built);
+
+
+
+
+             map << result;
+
+    }
+    return map;
+}
+
+QVector<QHash<QString, QString> > sk2data::QueryConnection(QString row,
+                                                       bool asc,
+                                                       QString searchrow,
+                                                       QString searchstring)
+{
+    QVector<QHash<QString, QString> > map;
+
+
+
+    QHash<QString, QString> sort;
+    sort["sortby"] = row;
+    if (asc) sort["sortorder"] = connection.ASC;
+    else { sort["sordorder"] = connection.DESC;}
+
+    sort["sortorder"] = row;
+    QHash<QString,QString> searchhash;
+    if (searchrow != "")
+    {
+        searchhash[searchrow] = searchstring;
+    }
+
+
+    QMap<int, QHash<QString, QString> > buffer =
+             connection.query("owners", searchhash,
+                            sort);
+
+    QHash<QString, QString> printorder;
+    printorder.insert("PrintOrder", "ID:CID");
+    printorder.insert("RecordSize", buffer[0]["RecordSize"]);
+
+    map << printorder;
+
+    foreach (auto item, buffer)
+    {
+
+        QString gender, yeardeath;
+        QHash<QString, QString> result;
+
+             result.insert("ID", item["Persons_ID"]);
+             result.insert("CID", item["Computers_ID"]);
+
+             map << result;
+
+    }
+    return map;
+}
+
+QVector<QHash<QString, QString> > sk2data::QueryPerson(QString row,
+                                                       bool asc,
+                                                       QString searchrow,
+                                                       QString searchstring)
+{
+    QVector<QHash<QString, QString> > map;
+
+
+
+    QHash<QString, QString> sort;
+    sort["sortby"] = row;
+    if (asc) sort["sortorder"] = connection.ASC;
+    else { sort["sordorder"] = connection.DESC;}
+
+    sort["sortorder"] = row;
+    QHash<QString,QString> searchhash;
+    if (searchrow != "")
+    {
+        searchhash[searchrow] = searchstring;
+    }
+
+
+    QMap<int, QHash<QString, QString> > buffer =
+             connection.query("persons", searchhash,
+                            sort);
+
     QHash<QString, QString> printorder;
     printorder.insert("PrintOrder", "ID:Name:Gender:Born:Died");
+    printorder.insert("RecordSize", buffer[0]["RecordSize"]);
+
     map << printorder;
 
 
-    while (i.hasNext())
+    foreach (auto item, buffer)
     {
-     i.next();
-     QString gender, yeardeath;
-     QHash<QString, QString> result;
 
-     result.insert("ID", i.value()["Persons_ID"]);
-     result.insert("Name", i.value()["Persons_Name"]);
+        QString gender, yeardeath;
+        QHash<QString, QString> result;
 
-     if (i.value()["Persons_Gender"] == "1")
-     {
-         result.insert("Gender", "Female");
+             result.insert("ID", item["Persons_ID"]);
+             result.insert("Name", item["Persons_Name"]);
 
-     }
-     else
-     {
-         result.insert("Gender", "Male");
+             if (item["Persons_Gender"] == "1")
+             {
+                result.insert("Gender", "Female");
 
-     }
-     result.insert("Born", i.value()["Persons_YearBorn"]);
-     if (i.value()["Persons_YearDeath"] == "0")
-     {
-         result.insert("Died", "Alive");
+              }
+              else
+              {
+                result.insert("Gender", "Male");
 
-     }
-     else
-     {
-         result.insert("Died", i.value()["Persons_YearDeath"]);
+              }
 
-     }
+             result.insert("Born", item["Persons_YearBorn"]);
+             if (item["Persons_YearDeath"] == "0")
+             {
+                result.insert("Died", "Alive");
 
-    map << result;
+             }
+             else
+             {
+                result.insert("Died", item["Persons_YearDeath"]);
 
+             }
+             map << result;
 
     }
     return map;

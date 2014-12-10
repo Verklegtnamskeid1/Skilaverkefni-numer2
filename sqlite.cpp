@@ -10,7 +10,7 @@ sqlite::sqlite()
                                       "Persons_YearDeath"};
     TablesDef[QString("computers")] = {"Computers_ID", "Computers_Name",
                                         "Computers_YearBuilt", "Computers_Type",
-                                        "Computers_Type", "Computers_BultOrNot"};
+                                        "Computers_Type", "Computers_BuiltOrNot"};
     TablesDef[QString("owners")] = {"Persons_ID", "Computers_ID"};
 
     /* Skilgreinir hvaða SQL dræver hún á að nota */
@@ -37,12 +37,11 @@ QString sqlite::searchstring(QHash<QString,QString> WHAT)
     int a = 0;
     foreach (QString string, WHAT.keys())
     {
-        if (a != 0) searchstring = searchstring + " AND ";
-        else
-        {
-            searchstring = " WHERE ";
-            searchstring = searchstring + string + "=" + WHAT[string];
-        }
+
+            /* Þurfum bara eitt einsog er */
+            searchstring = " WHERE UPPER(";
+            searchstring = searchstring +  string + ") LIKE UPPER('%steve%')";
+
     }
 
     return searchstring;
@@ -53,16 +52,16 @@ QString sqlite::sortstring(QHash<QString,QString> SORT)
     QString sort = "";
     if (SORT["sortorder"] != ASC && SORT["sortorder"] != DESC) SORT["sortorder"] = ASC;
     if (SORT["sortby"] == "") sort = "";
-    else sort = " ORDER BY "+ SORT["sortby"] + " " + SORT["sortorder"];
+    else sort = " ORDER BY "+ SORT["sortby"] + " COLLATE NOCASE " + SORT["sortorder"];
 
     return sort;
 }
 
-QHash<int, QHash<QString, QString> > sqlite::query(QString TABLE,
+QMap<int, QHash<QString, QString> > sqlite::query(QString TABLE,
                    QHash<QString,QString> WHAT,
                    QHash<QString,QString> SORT)
 {
-    QHash<int, QHash<QString, QString> > buffer;
+    QMap<int, QHash<QString, QString> > buffer;
     // Tjekka hvort sé valid tafla
     if (!tables.contains(TABLE))
     {
@@ -81,16 +80,27 @@ QHash<int, QHash<QString, QString> > sqlite::query(QString TABLE,
 
     QSqlQuery searchQuery;
     searchQuery = QSqlQuery(db);
-    QString searchWHERE = searchstring(WHAT);
+    QString searchWHERE = "";
+    foreach (QString string, WHAT.keys())
+    {
+            searchWHERE = " WHERE UPPER ($$ID$$) LIKE UPPER ('%$$STRING$$%')";
+
+           searchWHERE.replace("$$ID$$", string);
+           searchWHERE.replace("$$STRING$$", WHAT[string]);
+
+    }
+
     QString sortSTRING = sortstring(SORT);
     QString SQL = "SELECT "+getstring+" FROM "+TABLE+searchWHERE+sortSTRING;
     searchQuery.clear();
     searchQuery.prepare(SQL);
+    qDebug() << SQL;
     if (!searchQuery.exec())
     {
         qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();
         return buffer;
     }
+    qDebug() << "SQL QUERY ERROR:" << searchQuery.lastError().text();
 
 
     int c = 0;
@@ -106,6 +116,7 @@ QHash<int, QHash<QString, QString> > sqlite::query(QString TABLE,
         buffer.insert(c, buffer2);
         c++;
     }
+    buffer[0]["RecordSize"] = QString::number(c);
     return buffer;
 }
 
@@ -192,22 +203,6 @@ void sqlite::insert(QString TABLE, QHash<QString, QString> insert)
 
 
 
-
-}
-
-void sqlite::test()
-{
-    query("persons", EmptySearch, DefaultSort);
-
-    QHash<QString, QString> ble;
-    ble.insert("Persons_Name","Heheh");
-    ble.insert("Persons_Sex","0");
-    ble.insert("Persons_YearBorn","1983");
-    ble.insert("Persons_YearDeath","2014");
-
-
-
-    insert("persons", ble);
 
 }
 
