@@ -148,8 +148,10 @@ void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
     QString printorder = buffer[0]["PrintOrder"];
     QStringList col = printorder.split(":");
     int size = buffer[0]["RecordSize"].toInt();
+    buffer[0].remove("PrintOrder");
+    buffer[0].remove("RecordSize");
 
-    for (int a = 1; a < size; a++)
+    for (int a = 0; a < size; a++)
     {
         auto item = buffer[a];
         int colcount = 0;

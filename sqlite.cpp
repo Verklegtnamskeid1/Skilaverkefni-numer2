@@ -105,7 +105,6 @@ QMap<int, QHash<QString, QString> > sqlite::query(QString TABLE,
         return buffer;
     }
 
-
     int c = 0;
     while(searchQuery.next())
     {
