@@ -59,7 +59,8 @@ QString sqlite::sortstring(QHash<QString,QString> SORT)
 
 QMap<int, QHash<QString, QString> > sqlite::query(QString TABLE,
                    QHash<QString,QString> WHAT,
-                   QHash<QString,QString> SORT)
+                   QHash<QString,QString> SORT,
+                                   bool islike)
 {
     QMap<int, QHash<QString, QString> > buffer;
     // Tjekka hvort sé valid tafla
@@ -83,7 +84,11 @@ QMap<int, QHash<QString, QString> > sqlite::query(QString TABLE,
     QString searchWHERE = "";
     foreach (QString string, WHAT.keys())
     {
+           if (islike)
             searchWHERE = " WHERE UPPER ($$ID$$) LIKE UPPER ('%$$STRING$$%')";
+           else {
+               searchWHERE = " WHERE $$ID$$ = $$STRING$$";
+           }
 
            searchWHERE.replace("$$ID$$", string);
            searchWHERE.replace("$$STRING$$", WHAT[string]);

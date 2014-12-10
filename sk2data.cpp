@@ -125,7 +125,7 @@ QVector<QHash<QString, QString> > sk2data::QueryConnection(QString row,
                             sort);
 
     QHash<QString, QString> printorder;
-    printorder.insert("PrintOrder", "ID:CID");
+    printorder.insert("PrintOrder", "Person ID:Computer ID:Person name:Computer name");
     printorder.insert("RecordSize", buffer[0]["RecordSize"]);
 
     map << printorder;
@@ -136,8 +136,25 @@ QVector<QHash<QString, QString> > sk2data::QueryConnection(QString row,
         QString gender, yeardeath;
         QHash<QString, QString> result;
 
-             result.insert("ID", item["Persons_ID"]);
-             result.insert("CID", item["Computers_ID"]);
+
+        QHash<QString,QString> personsearchhash;
+        QHash<QString,QString> computersearchhash;
+        personsearchhash["Persons_ID"] = item["Persons_ID"];
+        computersearchhash["Computers_ID"] = item["Computers_ID"];
+
+        QMap<int, QHash<QString, QString> > personbuffer =
+            connection.query("persons", personsearchhash,
+                       connection.DefaultSort, false);
+        QMap<int, QHash<QString, QString> > computerbuffer =
+            connection.query("computers", computersearchhash,
+                       connection.DefaultSort, false);
+
+
+             result.insert("Person ID", item["Persons_ID"]);
+             result.insert("Computer ID", item["Computers_ID"]);
+             result.insert("Person name", personbuffer[0]["Persons_Name"]);
+             result.insert("Computer name", computerbuffer[0]["Computers_Name"]);
+
 
              map << result;
 

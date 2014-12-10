@@ -19,7 +19,8 @@ public:
 
     QMap<int, QHash<QString, QString> > query(QString TABLE,
                        QHash<QString,QString> WHAT,
-                       QHash<QString,QString> SORT);
+                       QHash<QString,QString> SORT,
+                                              bool islike = true);
 
     void deleteid(QString TABLE, QString row, int id);
 
