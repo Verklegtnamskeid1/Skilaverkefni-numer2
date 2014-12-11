@@ -1,49 +1,18 @@
- 	
-Skil 2
+https://gomockingbird.com/mockingbird/#gnwsxi2/eZKvSG
 
-Kerfið skal geta gert allt það sem hægt var í fyrsta verkefninu.
+Mjög grófar myndir af hvernig við ætlum að hafa valmyndina en gefur til kynna hvernig þetta á að vera.
 
-Þar að auki:
 
-    Þarf að skipta gagnalagi út fyrir SQL repository (sterklega mælt með því að nota SQLite). Ath. að þetta er krafa sem verður að uppfylla til að fá einkunn fyrir verkefnið.
 
-    Notandi þarf að geta skráð þekktar tölvur úr sögu tölvunarfræðinnar. Það sem þarf að vera hægt að skrá er:
 
-        Nafn
+Í þessari útgáfu á að skrifa gluggaforrit í Qt.
 
-        Byggingarár
+Virkni þess á að vera sú sama og í viku 2, þ.e. með SQL bakenda, kerfi sem getur skráð vísindamenn í tölvunarfræði, frægar tölvur, og tengingar þar á milli, birta lista, leita, raða etc. Sömu kröfur gilda varðandi viðhaldanleika kóða, notkun á Git og Qt.
 
-        Tegund tölvu (Mekkanísk, Elektrónísk, Smáravélar (þ.e. þær sem nota transistora), etc.)
+Eða með öðrum orðum:
 
-        Var hún byggð eða ekki?
+#include "skil2.h"
 
-    Þegar listi er birtur notandanum þá fær hann að ráða hvernig honum er raðað.
+(Þetta er aulabrandari. Ekki setja þessa línu í forritið ykkar).
 
-    Notandi þarf að geta leitað að tölvu.
-
-    Notandi þarf að geta tengt saman tölvur og persónur
-
-        Hver persóna getur verið tengd mörgum tölvum
-
-        Hver tölva getur verið tengt mörgum persónum
-
-Þá eru gerðar eftirfarandi kröfur að auki:
-
-    Nota skal lagskipta högun við útfærslu kerfisins.
-
-    Kóðinn skal hýstur með Git (GitHub, Bitbucket, etc.), nota skal Git í gegnum allt ferlið.
-
-    Nota skal Qt Creator við útfærslu.
-
-    Nota skal sqlite sem gagnalag
-
-    Kóðinn skal vera lesanlegur, vel formaður, vel skjalaður, og viðhaldanlegur, og að samræmi sé í forritunarstíl, til dæmis:
-
-        Rétt inndreginn
-
-        Samræmi í staðsetningu á slaufusvigum
-
-        Stíll við nafnagiftir á breytum, föllum og klösum
-
-        Athugasemdir lýsandi en í hófi. Lýsa af hverju kóðinn er eins og hann er, en ekki hvað hann gerir
-        o.s.frv.
+Vel útfærð lausn gefur 8 í einkunn. Hægt er að ná 10 með vel útfærðum viðbótum, þar sem hugmyndaflugið fær að ráða (t.d. drag-n-drop við útfærslu tenginga, setja inn myndir af vísindamönnum og tölvum etc. etc.) 
