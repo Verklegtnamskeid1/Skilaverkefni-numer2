@@ -5,6 +5,9 @@ Mjög grófar myndir af hvernig við ætlum að hafa valmyndina en gefur til kyn
 
 
 
+
+
+
 Í þessari útgáfu á að skrifa gluggaforrit í Qt.
 
 Virkni þess á að vera sú sama og í viku 2, þ.e. með SQL bakenda, kerfi sem getur skráð vísindamenn í tölvunarfræði, frægar tölvur, og tengingar þar á milli, birta lista, leita, raða etc. Sömu kröfur gilda varðandi viðhaldanleika kóða, notkun á Git og Qt.
