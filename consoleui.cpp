@@ -146,7 +146,7 @@ void ConsoleUI::Print(QVector<QHash<QString, QString> > buffer)
     buffer[0].remove("PrintOrder");
     buffer[0].remove("RecordSize");
 
-    for (int a = 0; a < size; a++)
+    for (int a = 0; a < size+1; a++)
     {
         auto item = buffer[a];
         int colcount = 0;
@@ -258,7 +258,7 @@ void ConsoleUI::AddComputer(){
     cout << "\nWas it built? (y/n Y/N):" << endl;
     int Computers_builtornot = cin.readLine().toInt();
 
-    gogn.AddPerson(Computers_name, Computers_type, Computers_yearbuilt, Computers_builtornot);
+    gogn.AddComputer(Computers_name, Computers_type, Computers_yearbuilt, Computers_builtornot);
 }
 
 void ConsoleUI::AddConnection()
