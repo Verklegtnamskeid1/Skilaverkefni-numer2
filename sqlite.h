@@ -8,6 +8,7 @@
 class sqlite
 {
 public:
+    QStringList tables;
     sqlite();
     static const QString ASC;
     static const QString DESC;
@@ -26,7 +27,7 @@ public:
 
 
 private:
-   static const QStringList tables;
+
    static const QStringList PersonsTable;
    static const QStringList ComputersTable;
    static const QStringList OwnersTable;

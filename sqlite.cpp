@@ -5,13 +5,43 @@ sqlite::sqlite()
     /* Skilgreina default */
     DefaultSort["sortby"] = QString("");
     DefaultSort["sortorder"] = ASC;
-    TablesDef[QString("persons")] = {"Persons_ID", "Persons_Name",
+
+
+    tables.push_back("persons");
+    tables.push_back("owners");
+    tables.push_back("computers");
+
+
+    QStringList pers;
+    pers.push_back("Persons_ID");
+    pers.push_back("Persons_Name");
+    pers.push_back("Persons_Sex");
+    pers.push_back("Persons_YearBorn");
+    pers.push_back("Persons_YearDeath");
+    TablesDef[QString("persons")] = pers;
+;
+    /*TablesDef[QString("persons")] = {"Persons_ID", "Persons_Name",
                                       "Persons_Sex","Persons_YearBorn",
-                                      "Persons_YearDeath"};
-    TablesDef[QString("computers")] = {"Computers_ID", "Computers_Name",
+                                      "Persons_YearDeath"}; */
+
+    QStringList comp;
+    pers.push_back("Computers_ID");
+    pers.push_back("Computers_Name");
+    pers.push_back("Computers_YearBuilt");
+    pers.push_back("Computers_Type");
+    pers.push_back("Computers_BuiltOrNot");
+    TablesDef[QString("computers")] = comp;
+
+    /*TablesDef[QString("computers")] = {"Computers_ID", "Computers_Name",
                                         "Computers_YearBuilt", "Computers_Type",
-                                        "Computers_Type", "Computers_BuiltOrNot"};
-    TablesDef[QString("owners")] = {"Persons_ID", "Computers_ID"};
+                                        "Computers_Type", "Computers_BuiltOrNot"};*/
+
+    QStringList own;
+    pers.push_back("Persons_ID");
+    pers.push_back("Computers_ID");
+    TablesDef[QString("owners")] = own;
+
+    /*TablesDef[QString("owners")] = {"Persons_ID", "Computers_ID"};/*
 
     /* Skilgreinir hvaða SQL dræver hún á að nota */
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -213,5 +243,5 @@ const QString sqlite::ASC = QString("ASC");
 const QString sqlite::DESC = QString("DESC");
 
 
-const QStringList sqlite::tables = {"persons", "owners", "computers"};
+
 

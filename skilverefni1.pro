@@ -1,6 +1,6 @@
 QT	 += core sql
 #compæla með c++11 stuðning
-CONFIG += c++11
+CONFIG += C++11
 
 QT	 -= gui
 
